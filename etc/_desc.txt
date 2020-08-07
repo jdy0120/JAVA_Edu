@@ -1,0 +1,149 @@
+오버로딩(overloading)
+ - 한 클래스 내에 동일한 이름을 가진 메소드를 정의하는 것
+ - 메소드 호출 시 구분이 가능하면 됨
+    매개변수의 자료형이나 개수로 구분함(리턴타입으로는 구분이 안됨)
+ - 생성자에서도 오버로딩이 가능함
+    여러 가지 방법으로 인스턴스를 생성하는 것이 가능하다는 의미
+
+this 키워드
+ - 현재 생성되고 있는 인스턴스를 의미(생성자 안에서만 사용가능)
+ - this.변수명 : 해당 변수는 멤버변수로 인식됨
+ - this([매개변수(들)]) : 현재 실행되고 있는 생성자에서 다른 생성자를 호출할 때 사용됨
+ 
+문자열(String)
+ - 문자열은 두 글자 이상의 문자들을 표현하는 자료형으로 자바에서는 인스턴스로 표현함
+ - java.lang.String 클래스로 문자열을 표현
+    java.lang패키지는 따로 import하지 않아도 됨(자동으로 import되어 있음)
+ - 생성자
+String(String original) : 지정한 원본(original)을 String인스턴스로(문자열) 생성
+String(StringBuffer buffer) : 지정한 StringBuffer인스턴스를 문자열로 변환
+String(StringBuilder builder) : 지정한 StringBuilder인스턴스를 문자열로 변환
+
+ - 문자열 생성법
+String str = new String("test"); // 정석적인 방법
+String str = "test"; // 문자열만 가능한 인스턴스 생성법
+
+ - 문자열은 상수형태의 인스턴스로 한 번 넣은 문자열은 변경할 수 없음
+    변경하게 되면 기존의 인스턴스는 메모리에 남고, 변경하는 인스턴스가 새롭게 생성됨
+ - 인스턴스이므로 '=='로 비교할 수 없음(메소드를 이용해야 함)
+
+ - 주요 메소드
+리턴	메소드명 및 설명
+char	charAt(int index) : 문자열에서 지정한 index에 해당하는 한 문자를 추출
+ - 인덱스 범위를 넘어서면 IndexOutOfBoundsException 발생
+
+int	compareTo(String anotherString) : 문자열과 지정한 문자열(anotherString)의 값을 비교하여 같으면 0, 다르면 음수나 양수 리턴
+int	compareToIgnoreCase(String str) : compareTo() 메소드와 같으나 대소문자를 구분하지 않고 비교
+
+boolean	endsWith(String suffix) : 문자열의 끝부분이 suffix인지 여부
+boolean	equals(Object anObject) : 문자열을 비교하여 같은지 여부를 리턴
+boolean	equalsIgnoreCase(String anotherString) : equals() 메소드와 같으나 대소문자를 구분하지 않고 비교
+
+indexOf() : 문자열에서 특정 문자(열)의 위치를 찾아 리턴하며, 못 찾으면 -1을 리턴		
+int	indexOf(int ch) : 문자열에서 지정한 문자(ch)의 위치를 찾아 리턴		
+int	indexOf(int ch,int fromIndex) : fromIndex부터 찾아 리턴		
+int	indexOf(String str) : 문자열에서 지정한 문자열(str)의 위치를 찾아 리턴	
+int	indexOf(String str, int fromIndex) : fromIndex부터 찾아 리턴	
+boolean isEmpty() : 문자열이 비어 있는지 여부를 리턴
+
+lastIndexOf() : indexOf()와 비슷하며, 뒤에서 부터 찾기 시작
+int	lastIndexOf(int ch) : 지정한 문자(ch)의 마지막 위치를 리턴
+int	lastIndexOf(int ch, int fromIndex) : fromIndex부터 찾아 리턴
+int	lastIndexOf(String str) : 지정한 문자열(str)의 마지막 위치를 리턴
+int	lastIndexOf(String str, int fromIndex) : fromIndex부터 찾아 리턴
+int	length() : 문자열의 길이로 문자의 개수를 리턴, 마지막 인덱스 + 1의 값과 같음
+
+String	replace(char oldChar, char newChar) : 특정 문자(oldChar)를 찾아 새로운 문자(newChar)로 변경한 새 문자열 생성
+String	replaceAll(String regex, String replacement) : 특정 문자열(regex)를 찾아 새로운 문자열(replacement)로 변경한 새 문자열 생성
+
+String[] split(String regex) : 문자열을 regex를 기준으로 잘라 문자열 배열로 리턴
+boolean	startsWith(String prefix) : 문자열의 시작부분이 prefix인지 여부
+String	substring(int beginIndex) : 문자열을 beginIndex부터 끝까지 잘라내어 리턴
+String	substring(int beginIndex, int endIndex) : 문자열을 beginIndex부터 endIndex - 1 까지 잘라내어 리턴
+
+String	toLowerCase() : 문자열의 모든 영문을 소문자로 변환하여 리턴 // python : lower()
+String	toUpperCase() : 문자열의 모든 영문을 대문자로 변환하여 리턴 // python : upper()
+String	trim() : 문자열의 양쪽 끝에 있는 불필요한 공백을 제거하여 리턴 // python : strip()
+ - 사용자가 입력하는 모든 데이터에 trim()메소드를 사용해야 함
+
+static String	valueOf(모든 종류의 데이터) : 지정한 데이터를 문자열로 변환하여 리턴
+ - static이므로 인스턴스 생성없이 String.valueOf(데이터)로 사용할 수 있다.
+ - 보통 문자열로 변환할 때에는 데이터 + ""으로 간편하게 변환하는 경우가 많다.
+    예) 정수 10을 문자열로 변환 -> String.valueOf(10); 또는 10 + "";
+    단, 메모리 관리에 취약한 프로그램 작업시 valueOf()메소드를 사용하는 것이 좋다.
+ 
+
+StringBuilder & StringBuffer
+ - 문자열 변경을 위한 클래스들로 쓰레드 사용여부에 따라 각각 선택하여 사용하면 됨
+ - 두 클래스는 메소드까지 동일하여 둘 중 아무거나 사용해도 됨
+    단, StringBuffer는 jdk1.0에서 추가되었으며 쓰레드 세이프(thread safe)한 특징을 가짐
+    StringBuilder는 jdk1.0에서 추가되었으며 쓰레드에서 불안정하나 속도가 빠름
+ - 생성자
+StringBuffer(String str) : 지정한 문자열로 StringBuffer 인스턴스 생성
+
+ - 주요 메소드 : String클래스와 겹치는 메소드는 생략
+리턴			메소드명 및 설명
+StringBuffer		append(모든 종류의 데이터) : 지정한 데이터를 StringBuffer의 뒤에 덧붙임
+StringBuffer		delete(int start, int end) : 지정한 인덱스 범위(start 부터 end - 1)에 들어가는 문자열 삭제
+StringBuffer		eleteCharAt(int index) : 지정한 인덱스의 문자 하나를 삭제
+void			ensureCapacity(int minimumCapacity) : 최소 용량을 minimumCapacity로 지정
+StringBuffer		insert(int offset, 모든 종류의 데이터) : 지정한 위치에 데이터를 끼워넣기
+StringBuffer		reverse() : 문자열을 뒤집음
+void			setCharAt(int index, char ch) : 지정한 위치의 문자를 ch로 변경
+String			toString() : String 인스턴스로 변경하여 리턴
+void			trimToSize() : 여유 용량을 없애고 딱 맞게 줄임
+    - 모든 메소드와 생성자들은 Strinbuilder클래스에도 동일한 이름과 매개변수로 존재함
+
+
+StringTokenizer 클래스
+ - java.util 패키지에 이는 클래스로 문자열을 특정 구분자를 기준으로 잘라주는 클래스
+ - String클래스의 split()메소드와 비슷하나 동작되는 방식과 리턴값에서 차이가 남
+ - 생성자
+StringTokenizer(String str) : 지정된 문자열을 공백문자(띄어쓰기)를 기준으로 자름
+StringTokenizer(String str, String delim) : 지정된 문자열(str)을 지정된 구분자(delim)를 기준으로 자름
+StringTokenizer(String str, String delim, boolean returnDelims) : 지정된 문자열(str)을 지정된 구분자(delim)를 기준으로 자르면 구분자도 포함할 지 여부지정
+ : returnDelims : 잘라진 문자열(토큰)에 구분자도 포함시킬지 여부지정(기본값 : false)
+ - 주요 메소드
+리턴	메소드 및 설명
+int	countTokens() : 잘라진 조각(token)의 총 개수
+boolean	hasMoreElements() : 조각이 더 있는지 여부로 조건으로 사용됨
+boolean	hasMoreTokens() : hasMoreElements()와 동일한 메소드이다.
+Object	nextElement() : 다음 조각이 있는지 여부
+String	nextToken() : nextElement()메소드와 동일
+
+
+배열(array)
+ - 같은 종류의 데이터들을 하나의 이름으로 묶어 사용하는 객체
+    인덱스 번호(0번 부터 시작)가 있어 각 칸의 데이터에 접근할 수 있음
+ - 장점 : 같은 종류의 여러 데이터를 관리하기 쉽다.(인덱스 번호를 이용하면 루프를 돌릴 수 있음), 속도 빠름
+ - 단점 : 배열 생성시 반드시 크기(칸의 개수)를 알고 있어야 함
+ - 배열에 들어가는 데이터에는 기본 자료형 뿐만 아니라 일반 객체(인스턴스)도 저장할 수 있음
+ - 크게 1차원 배열과 다차원(주로 2차원) 배열로 나뉨
+
+1차원 배열
+ - 한 행이나 열로 표현되며, 같은 종류의 데이터를 쭉 나열하는 형식의 배열로 가장 많이 사용됨
+ - 생성법
+자료형[] 배열명 = new 자료형[배열의 크기];	//지정한 크기를 가지는 배열이 생성됨
+예) int[] arrScore = new int[10];	//int형 데이터 10개를 저장할 수 있는 arrScore라는 배열 생성
+또는 자료형 배열명[] = new 자료형[배열의 크기]; 방식으로 생성하기도 하나 보통 첫번째 방식을 많이 사용함
+
+ - 배열은 생성과 동시에 초기화시킬 수도 있음
+자료형[] 배열명 = {값1,값2, ... , 값n};
+
+다차원 배열
+ - 2차원 배열을 사용하는 경우가 많다.
+ - 여러 개의 1차원 배열이 모인 것을 2차원 배열이라 함
+ - 생성법
+자료형[][] 배열명 = new 자료형[배열의 행수][배열의 열수];
+또는
+자료형 배열명[][] = new 자료형[배열의 행수][배열의 열수];
+과
+자료형[] 배열명[] = new 자료형[배열의 행수][배열의 열수];
+도 있음, 단, 거의 첫번째 방법을 사용함
+
+ - 생성과 초기화를 동시에
+잘형[][] 배열명 = {
+   {값1, 값2,..., 값n},
+   {값1, 값2,..., 값n},
+   {값1, 값2,..., 값n}
+};
