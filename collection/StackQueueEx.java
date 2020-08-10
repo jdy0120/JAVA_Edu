@@ -15,12 +15,12 @@ class StackQueueEx{
 		// 큐 q에 세 개의 객체를 저장
 		
 		System.out.println("=== Stack ===");
-		while (st.size() != 0){
+		while (!st.empty()){
 			System.out.println(st.pop());
 		}
 
 		System.out.println("=== Queue ===");
-		while (q.size() != 0){
+		while (!q.empty()){
 			System.out.println(q.poll());
 		}
 	}

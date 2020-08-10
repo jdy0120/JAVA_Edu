@@ -21,7 +21,11 @@ class ArrayListLinkedList{
 		System.out.println("ArrayList : " + remove1(al1));
         System.out.println("LinkedList : " + remove1(ll1));
 		System.out.println();
-        
+
+        // 중간에 작업하는 것까지 보면 LinkedList가 ArrayList보다 전체적으로 빠름
+		// 단, 거의 대부분의 작업이 순차적으로 이루어지기 대문에 ArrayList가 더 많이 사용됨
+		// 중간에 하는 작업이 많을 경우 LinkedList호 작업하다가, 중간 작업이 끝나면 다시 ArrayList로
+		// 변환하여 작업하는 경우도 있다.
 	}
 	public static long add1(List list){
 		long start = System.currentTimeMillis();
