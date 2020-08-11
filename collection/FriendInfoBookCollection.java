@@ -54,6 +54,10 @@ class UnivFriend extends Friend{
 
 class Friendhandler{
 	private ArrayList<Friend> friends = new ArrayList<Friend>();
+	// Friend형 인스턴스만 저장하는 ArrayList인 friends를 선언 및 생성
+	// 제네릭으로 '<Friend>'를 선언했으므로 오직 Friend 형 객체만 저장할 수 있게 됨
+	// 안에 저장된 객체를 사용시 Friend클래스로 형변환하지 않아도 자동으로 Friend형으로 인식함
+	// 만약 제네릭으로 선언하지 않았으면 안에 저장된 객체는 Object로 인식되어 사용시 형변환을 해야 함
 	public void addFriendInfo(Friend fren){
 		friends.add(fren);
 	}
@@ -77,6 +81,9 @@ class Friendhandler{
 	public void showAllData(){
 		for (int i = 0 ; i < friends.size() ; i++ ){
 			friends.get(i).showData();
+			// ArrayList생성시 <Friend>로 선언하여 Friend형 인스턴스만 저장했기 때문에 따로 형변환 없이 사용가능
+			// 상위클래스인 Friend에 메소드들이 정의되어 있고, 하위클래스인 HighFriend와 UnivFriend에서 오버라이딩
+			// 했기 때문에 Friend형으로도 메소드 호출이 가능
 			System.out.println();
 		}
 	}
