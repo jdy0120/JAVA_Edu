@@ -1,0 +1,140 @@
+날짜 및 시간
+ - java에서는 jdk1.0에서 Date객체를 이용하여 날짜를 표현했으나 기능이 너무 부족하여
+ jdk1.1에서 Calendar객체를 새롭게 제공하게 됨
+ - 그 후 jdk1.8에서 time패키지로 다시 한 번 새로운 형태로 날짜 및 시간을 표현하게 됨
+
+ Calendar 클래스
+  - java.util 패키지에 있음
+  - 기본적으로 Calendar클래스는 abstract 클래스이므로 인스턴스 생성시 생성자를 이용하지
+  않고, getInstatnce()메소드를 이용하여 인스턴스를 생성하게 됨
+  - 기존의 날짜표현 클래스인 Date 클래스의 인스턴스로 변환이 가능
+  - 주요 메소드
+리턴		메소드명 및 설명
+void		add(int field, int amount) : field에 해당하는 값에 amount를 더한 날짜
+ - amount에 음수를 넣으면 이전 날짜 및 시간을 구할 수 있음
+int		get(int field) : 주어진 field(년월일시분초 등)에 해당하는 값을 리턴
+static		Calendar getInstance() : abstract 클래스인 Calendar의 인스턴스를 생성
+ - 기본적으로 현 시스템의 오늘 날짜 및 현재 시각을 가지고 있음
+void		roll(int field, int amount) : field에 해당하는 값에 amount를 더한 날짜
+ - add()와 비슷하나 지정된 field값만을 더 함(다른 field에는 영향을 미치지 않음)
+
+set() : 특정 날짜 및 시간을 지정하는 메소드
+void	set(int field, int value) : 지정된 field의 값을 value로 변경
+void	set(int year, int month, int date) : 지정한 년월일로 날짜 변경
+void	set(int year, int month, int date, int hourOfDay, int minute)
+ : 지정한 년월일 시분으로 날짜 및 시간 변경(시는 24시간제로 입력)
+void	set(int year, int month, int date, int hourOfDay, int minute, int second)
+ : 지정한 년월일 시분초로 날짜 및 시간 변경(시는 24시간제로 입력)
+
+
+time 패키지
+ - jdk1.8에서 추가된 날짜 및 시간 관련 패키지로
+    Calendar는 쓰레드에서 불안전하므로 멀티 쓰레드에서도 안전한 기능을 만든것
+ - 날짜(LocalDate)와 시간(LocalTime)을 따로 생성할 수 있으며, 같이(LocalDateTime)도 생성됨
+
+LocalDate 클래스
+ - 날짜만을 생성하는 클래스로 따로 생성자를 이용하지 않고 now()나 of() 등의 메소드를 통해
+ 날짜 인스턴스를 생성함
+ - Calendar와 다르게 월을 1~12로 표현
+ - 인스턴스 생성
+static LocalDate now() : 현재 날짜를 가지고 LocalDate의 인스턴스 생성
+static LocalDate of(int year, int month, int dayOfMonth)
+ : 원하는 년(year), 월(month), 일(dayOfMonth)을 지정하며 LocalDate의 인스턴스 생성
+
+ -주요 메소드
+ 필요한 데이터 추출 메소드
+ 리턴		메소드명 및 설명
+ int		get(TemporalField field) : 가져올 필드를 직접 지정함
+ int		getYear() : 년도를 리턴
+ int		getMonthValue() : 월(1~12)
+ Month		getMonth() : 월(DECEMBER) getMonth().getValue() = 12
+ int		getDayOfMonth : 일(1~31)
+ int		getDayOfYear : 일(올 해의 몇 번째 일 : 1~366)
+ DayOfWeek	getDayOfWeek() : 요일(FRIDAY) getDayOfWeek().getValue() = 5
+ int		lengthOfMonth() : 현재 달의 총 일수
+ int		lengthOfYear() : 현재 년의 총 일수
+ boolean	isLeapYear() : 윤년 여부
+
+
+
+값을 변경하는 메소드
+ 리턴		메소드명 및 설명
+LocalDate	with(TemporalField field, long newValue)
+ : 지정한 field의 값을 newValue로 변경하여 새로운 LocalDate객체를 리턴
+LocalDate	withDayOfMonth(int dayOfMonth) : 날짜에서 일(day)을 변경
+LocalDate	withDayOfYear(int dayOfYear) : 날짜에서 일(day : 년도에서의 일)을 변경
+LocalDate	withMonth(int month) : 날짜에서 월(month)을 변경
+LocalDate	withYear(int year) : 날짜에서 년(year)을 변경
+
+
+날짜 계산용 메소드
+리턴		메소드명 및 설명
+LocalDate	plus(long amountToAdd, TemporalUnit unit)
+ : 지정된 유닛(unit)의 값에 amountToAdd를 더하여 리턴
+LocalDate	plusDays(long daysToAdd) : 날짜에서 일(day)에 daysToAdd만큼 더함
+LocalDate	plusMonths(long monthsToAdd) : 날짜에서 월(month)에 monthsToAdd만큼 더함
+LocalDate	plusWeeks(long weeksToAdd) : 날짜에 주(week)에 weeksToAdd만큼 더함
+LocalDate	plusYears(long yearsToAdd) : 날짜에서 년(year)에 yearsToAdd만큼 더함
+
+LocalDate	minus(long amountToSubtract, TemporalUnit unit)
+ : 지정된 유닛(unit)의 값에 amountToAdd를 빼고 리턴
+LocalDate	minusDays(long daysToSubtract) : 날짜에서 일에 daysToSubtract만큼 뺌
+LocalDate	minusMonths(long monthsToSubtract) : 날짜의 월에 monthsToSubtract만큼 뺌
+LocalDate	minusWeeks(long weeksToSubtract) : 날짜에 주를 weeksToSubtract만큼 뺌
+LocalDate	minusYears(long yearsToSubtract) : 날짜에서 년에 yearsToSubtract만큼 뺌
+
+
+LocalTime 클래스
+ - 시간부분만을 생성하는 클래스로 따로 생성자를 이용하지 않고 now()나 of() 등의 메소드를 통해
+ 시간 인스턴스를 생성함
+ - 인스턴스 생성
+static LocalTime now() : 현재 시간을 이용하여 LocalTime클래스의 인스턴스 생성
+static LocalTime of(int hour, int minute) : 지정한 시분을 이용해서 LocalTime클래스의 인스턴스 생성
+static LocalTime of(int hour, int minute, int second)
+: 지정한 시분을 이용해서 LocalTime클래스의 인스턴스 생성
+static LocalTime of(int hour, int minute, int second, int nanoOfSecond)
+: 지정한 시분초와 나노초를 이용해 LocalTime클래스의 인스턴스 생성
+
+
+- 주요 메소드
+필요한 데이터 추출 메소드
+리턴		메소드명 및 설명
+int		getHour() : 시(23)
+int		getMinute() : 분(0~59)
+int		getSecond() : 초(0~59)
+int		getNano() : 나노초
+
+값을 변경하는 메소드 : 값 변경 후 새로운 LocalTime객체를 리턴
+ 리턴		메소드명 및 설명
+LocalTime	with(TemporalField field, long newValue)
+ : 지정한 field의 값을 newValue로 변경하여 새로운 LocalDate객체를 리턴
+LocalTime	withHour(int hour) : 시간에서 '시'를 변경
+LocalTime	withMinute(int minute) : 시간에서 '분'을 변경
+LocalTime	withNano(int nanoOfSecond) : 시간에서 '나노초'를 변경
+LocalTime	withSecond(int second) : 시간에서 '초'를 변경
+
+
+날짜 계산용 메소드 : 값 변경 후 새로운 LocalTime객체를 리턴
+ 리턴		메소드명 및 설명
+LocalTime
+plus(long amountToAdd, TemporalUnit unit)
+ : 지정된 유닛(unit)의 값에 amountToAdd를 더하여 리턴
+LocalTime plusHours(long hoursToAdd);	//
+field에 해당하는 값에 amount를 더한 날짜");
+LocalTime	plusMinutes(long minutesToAdd) : 시간에 지정된 '분'을 추가
+LocalTime	plusNanos(long nanosToAdd) : 시간에 지정된 '나노초'를 추가
+LocalTime	plusSeconds(long secondsToAdd) : 시간에 지정된 '초'을 추가
+
+
+LocalTime	minus(long amountToSubtract, TemporalUnit unit)
+ : 지정된 유닛(unit)의 값에 amountToAdd를 빼고 리턴
+LocalTime	minusHours(long hoursToSubtract) : 날짜에서 시에 hoursToSubtract만큼 뻄
+LocalTime	minusDays(long daysToSubtract) : 날짜에서 일에 daysToSubtract만큼 뺌
+LocalTime	minusMonths(long monthsToSubtract) : 날짜의 월에 monthsToSubtract만큼 뺌
+LocalTime	minusWeeks(long weeksToSubtract) : 날짜에 주를 weeksToSubtract만큼 뺌
+LocalTime	minusYears(long yearsToSubtract) : 날짜에서 년에 yearsToSubtract만큼 뺌
+
+
+
+Period와 Duration
+ - Period는 두 날짜 사이의 차를 계산

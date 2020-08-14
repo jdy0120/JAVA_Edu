@@ -2,16 +2,15 @@ import java.util.*;
 
 
 class CalendarEx2Me {
-	public static void main(String[] args) {
-		final String[] WEEK_DAY = {"", "일","월", "화", "수", "목", "금", "토"};
+	static final String[] WEEK_DAY = {"", "일","월", "화", "수", "목", "금", "토"};
 
+	public static void main(String[] args) {
 		Calendar date1 = Calendar.getInstance();
 		Calendar date2 = Calendar.getInstance();
 
 		date1.set(Calendar.YEAR, 2019);
 		date1.set(Calendar.MONTH, 3);
-		date1.set(Calendar.DATE, 15);
-		
+		date1.set(Calendar.DATE, 15);		
 		
 		Date nextDay = date1.getTime();
 		System.out.println(nextDay);
@@ -50,8 +49,6 @@ class CalendarEx2Me {
 		}
 
 		System.out.println(year + "년 " + month + "월 " + day + "일");
-
-
 
 		// date1을 2019년 3월 15일로 지정하고, date1과 date2를 출력
 		// 출력시 'xxxx년 xx월 xx일 x요일'로 출력
