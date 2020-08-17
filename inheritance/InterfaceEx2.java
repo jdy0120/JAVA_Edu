@@ -1,11 +1,11 @@
-interface PersonalNumberStorage{
+interface PersonalNumberStorage {
 	public abstract void addPersonalInfo(String name, String perNum);
 	public abstract String searchName(String perNum);
 }
 
-class PersonalNumInfo{
+class PersonalNumInfo {
 	String name, number;
-	PersonalNumInfo(String name, String number){
+	PersonalNumInfo(String name, String number) {
 		this.name = name;
 		this.number = number;
 	}
@@ -13,35 +13,30 @@ class PersonalNumInfo{
 	String getNumber() { return number; }
 }
 
-class PersonalNumberStorageImpl implements PersonalNumberStorage{
-// PersonalNumberStorage가 인터페이스이므로 상속이 아닌 구현해야 함
+class PersonalNumberStorageImpl implements PersonalNumberStorage {
+// PersonalNumberStorage가 인터페이스이므로 상속이 아닌 구현(implements)해야 함
 	PersonalNumInfo[] perArr;
-
 	int numOfPerInfo;
 
-	public PersonalNumberStorageImpl(int sz){
+	public PersonalNumberStorageImpl(int sz) {
 		perArr = new PersonalNumInfo[sz];
 		numOfPerInfo = 0;
 	}
-	public void addPersonalInfo(String name, String perNum){
-		perArr[numOfPerInfo] = new PersonalNumInfo(name,perNum);
+	public void addPersonalInfo(String name, String perNum) {
+		perArr[numOfPerInfo] = new PersonalNumInfo(name, perNum);
 		numOfPerInfo++;
 	}
-	public String searchName(String perNum){
-		String str;
-		for (int i = 0; i < numOfPerInfo ; i++ ){
-			if (perNum.equals(perArr[i].getNumber())){
-				str = "이름 : " + perArr[i].getName() + "/ 주민번호 : " + perArr[i].getNumber();
-				return str;
+	public String searchName(String perNum) {
+		for (int i = 0 ; i < numOfPerInfo ; i++) {
+			if (perNum.equals(perArr[i].getNumber())) {
+				return perArr[i].getName();
 			}
 		}
-		str = "검색결과가 없습니다.";
-		return str;
+		return null;
 	}
 }
 
-
-class InterfaceEx2{
+class InterfaceEx2 {
 	public static void main(String[] args) {
 		PersonalNumberStorage storage = new PersonalNumberStorageImpl(10);
 		storage.addPersonalInfo("홍길동", "950000-1234567");

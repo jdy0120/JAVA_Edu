@@ -1,30 +1,27 @@
-class MemberInfo{
+class MemberInfo {
 	private String id, name, gender, addr;
-	public MemberInfo(String id,String name,String gender,String addr){
-		this.id = id;
-		this.name = name;
-		this.gender = gender;
-		this.addr = addr;
+	public MemberInfo(String i, String n, String g, String a) {
+		id = i;		name = n;	gender = g;		addr = a;
 	}
-	public String getId()				{ return id; }
-	public String getName()				{ return name; }
-	public String getGender()			{ return gender; }
-	public String getAddr()				{ return addr; }
-	public void setAddr(String addr)	{ this.addr = addr; }
-
-	public String toString(){
-	// Object크래스에 있는 메소드 오버라이딩하여 사용하는 것을 권장
+	public String getId() { return id; }
+	public String getName() { return name; }
+	public String getGender() { return gender; }
+	public String getAddr() { return addr; }
+	public void setAddr(String addr) { this.addr = addr; }
+	public String toString() {
+	// Object클래스에 있는 메소드 오버라이딩하여 사용하는 것을 권장
 	// 객체(인스턴스)를 출력할 때 자동으로 호출되는 메소드
-		String str = "ID : " + id + " / 이름 : " + name + " / 성별 : " + gender + " / 주소 : " + addr;
+		String str = "ID : " + id + " / 이름 : " + name + 
+			" / 성별 : " + gender + " / 주소 : " + addr;
 		return str;
 	}
 }
 
-class ToStringEx{
+class ToStringEx {
 	public static void main(String[] args) {
-		MemberInfo mi1 = new MemberInfo("test1","홍길동","남","서울");
-		MemberInfo mi2 = new MemberInfo("test2","전우치","남","함경도");
-		MemberInfo mi3 = new MemberInfo("test3","임꺽정","남","지리산");
+		MemberInfo mi1 = new MemberInfo("test1", "홍길동", "남", "서울");
+		MemberInfo mi2 = new MemberInfo("test2", "전우치", "남", "함경도");
+		MemberInfo mi3 = new MemberInfo("test3", "임꺽정", "남", "지리산");
 
 		System.out.println(mi1);
 		System.out.println(mi2);
