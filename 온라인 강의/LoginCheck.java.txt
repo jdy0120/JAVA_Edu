@@ -1,0 +1,74 @@
+/*
+명령 프로프트를 통해 아이디와 암호를 문자열로 입력받아 검사한 후 로그인 작업
+아이디 : 6 ~ 20자 이내로 영문, 숫자, 언더바만으로 이루어져 있어야 함(첫글자는 반드시 영문이어야 함)
+암호 : 6 ~ 20자 이내로 영문, 숫자, 언더바, 특수문자(! @ # $ % ^ & *)만으로 이루어져 있어야 함(첫글자는 반드시 영문이어야 함)
+
+메인 클래스에서는 아이디와 암호를 입력받고, 검사는 다른 클래스를 이용해야 함
+*/
+import java.util.*;
+
+class StrCheck {
+// 입력받은 문자열을 검사하는 클래스
+	public boolean isEng(char c) {
+		if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z')	return true;
+		return false;
+	}
+	public boolean isNum(char c) {
+		if (c >= '0' && c <= '9')	return true;
+		return false;
+	}
+	public boolean isSC(char c) {
+		if (c == '!' || c == '@' || c == '#' || c == '$' || c == '%' || c == '^' || c == '&' || c == '*')
+			return true;
+		return false;
+	}
+
+	public String chkID(String str) {
+		String msg = "제대로 된 아이디 입니다.";
+		if (str.length() >= 6 && str.length() <= 20) {
+			for (int i = 0 ; i < str.length() ; i++) {
+				char c = str.charAt(i);
+				if (i == 0 && !isEng(c)) {
+					msg = "아이디의 첫글자는 영문이어야 합니다.";
+				} else if (!isEng(c) && !isNum(c) && c != '_') {
+					msg = "아이디는 영문과 숫자, 언더바만으로 입력해야 됩니다.";
+				}
+			}
+		} else {
+			msg = "아이디는 6자 이상 20자 이내로 입력해야 합니다.";
+		}
+
+		return msg;
+	}
+
+	public String chkPWD(String str) {
+		String msg = "제대로 된 비밀번호 입니다.";
+		if (str.length() >= 6 && str.length() <= 20) {
+			for (int i = 0 ; i < str.length() ; i++) {
+				char c = str.charAt(i);
+				if (!isEng(c) && !isNum(c) && c != '_' && !isSC(c)) {
+					msg = "비밀번호는 영문과 숫자, 언더바, 특수문자만으로 입력해야 됩니다.";
+				}
+			}
+		} else {
+			msg = "비밀번호는 6자 이상 20자 이내로 입력해야 합니다.";
+		}
+
+		return msg;
+	}
+}
+
+class LoginCheck {
+// 로그인용 아이디와 암호를 입력받는 클래스
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.print("아이디 : ");	String id = scan.nextLine().trim();
+		System.out.print("비밀번호 : ");	String pwd = scan.nextLine().trim();
+
+		StrCheck sc = new StrCheck();
+		String idMsg = sc.chkID(id);
+		System.out.println(idMsg);
+		String pwdMsg = sc.chkPWD(pwd);
+		System.out.println(pwdMsg);
+	}
+}
