@@ -4,71 +4,143 @@
 암호 : 6 ~ 20자 이내로 영문, 숫자, 언더바, 특수문자(! @ # $ % ^ & *)만으로 이루어져 있어야 함(첫글자는 반드시 영문이어야 함)
 
 메인 클래스에서는 아이디와 암호를 입력받고, 검사는 다른 클래스를 이용해야 함
+
+아이디, 암호, 이름, 전화번호를 저장하는 MemberInfo클래스를 제작
+회원정보를 저장하는 ArrayList를 생성하여 사용자가 입력하는 아이디와 암호를 이용하여 로그인 시킴
+회원정보1 : 'test1', '1234', '홍길동', '010-1234-5678'
+회원정보2 : 'test2', '2345', '전우치', '010-1234-1234'
+회원정보3 : 'test3', '3456', '임꺽정', '010-1234-4321'
 */
 import java.util.*;
 
 class StrCheck {
 // 입력받은 문자열을 검사하는 클래스
 	public boolean isEng(char c) {
+	// 받아온 글자가 영문인지 여부를 검사하는 메소드
 		if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z')	return true;
 		return false;
 	}
 	public boolean isNum(char c) {
+	// 받아온 글자가 숫자인지 여부를 검사하는 메소드
 		if (c >= '0' && c <= '9')	return true;
+		// 받아온 값이 숫자가 아닌 글자(char)이므로 비교도 char형으로 해야 함
 		return false;
 	}
 	public boolean isSC(char c) {
+	// 받아온 글자가 특수문자인지 여부를 검사하는 메소드
 		if (c == '!' || c == '@' || c == '#' || c == '$' || c == '%' || c == '^' || c == '&' || c == '*')
 			return true;
 		return false;
 	}
 
-	public String chkID(String str) {
-		String msg = "제대로 된 아이디 입니다.";
-		if (str.length() >= 6 && str.length() <= 20) {
+	public boolean isChkID(String str) {	// 아이디 검사용 메소드
+		boolean chk = true;		// 아이디 검사 결과를 저장할 boolean선언
+		if (str.length() >= 5 && str.length() <= 20) {
+		// 받아온 아이디가 5~20사이의 글자인지 검사
 			for (int i = 0 ; i < str.length() ; i++) {
+			// 글자 개수만큼 루프를 돌면서 한 글자씩 추출하여 검사하는 for문
 				char c = str.charAt(i);
+				// 받아온 문자열 str의 글자 개수 만큼 charAt()메소드를 이용하여 한 글자씩 추출
 				if (i == 0 && !isEng(c)) {
-					msg = "아이디의 첫글자는 영문이어야 합니다.";
+				// 첫글자이면서 영문이 아닐 경우
+					System.out.println("아이디의 첫글자는 영문이어야 합니다.");
+					chk = false;
+					break;	// 첫글자에서 잘못되었기 때문에 두번째 글자부터는 검사할 필요가 없으므로 for문을 빠져나감
 				} else if (!isEng(c) && !isNum(c) && c != '_') {
-					msg = "아이디는 영문과 숫자, 언더바만으로 입력해야 됩니다.";
+				// 첫글자가 아니고, 영문도 숫자도 언더바도 아닐 경우
+					System.out.println("아이디는 영문과 숫자, 언더바만으로 입력해야 됩니다.");
+					chk = false;
+					break;
 				}
 			}
 		} else {
-			msg = "아이디는 6자 이상 20자 이내로 입력해야 합니다.";
+			System.out.println("아이디는 5자 이상 20자 이내로 입력해야 합니다.");
+			chk = false;
 		}
 
-		return msg;
+		return chk;
 	}
 
-	public String chkPWD(String str) {
-		String msg = "제대로 된 비밀번호 입니다.";
-		if (str.length() >= 6 && str.length() <= 20) {
+	public boolean isChkPWD(String str) {
+		boolean chk = true;
+		if (str.length() >= 4 && str.length() <= 20) {
 			for (int i = 0 ; i < str.length() ; i++) {
 				char c = str.charAt(i);
 				if (!isEng(c) && !isNum(c) && c != '_' && !isSC(c)) {
-					msg = "비밀번호는 영문과 숫자, 언더바, 특수문자만으로 입력해야 됩니다.";
+				// 비밀번호가 영문, 숫자, 언더바, 특수문자 모두 아닐 경우
+					System.out.println("비밀번호는 영문과 숫자, 언더바, 특수문자만으로 입력해야 됩니다.");
+					chk = false;
+					break;
 				}
 			}
 		} else {
-			msg = "비밀번호는 6자 이상 20자 이내로 입력해야 합니다.";
+			System.out.println("비밀번호는 4자 이상 20자 이내로 입력해야 합니다.");
+			chk = false;
 		}
 
-		return msg;
+		return chk;
 	}
+}
+
+class MemberInfo {
+// 한 명의 회원 정보를 저장하기 위한 클래스
+	private String id, pwd, name, phone;	// 회원 정보를 저장할 변수(들) 선언
+	public MemberInfo(String id, String pwd, String name, String phone) {
+	// 생성자에서 회원정보를 받아와 멤버변수에 저장시킴
+		this.id = id;	this.pwd = pwd;		this.name = name;	this.phone = phone;
+	}
+
+	// 멤버 변수들을 위한 getter & setter 메소드들(id와 name은 변경하지 않으므로 setter메소드가 없음)
+	public String getId() { return id; }
+
+	public String getPwd() { return pwd; }
+	public void setPwd(String pwd) { this.pwd = pwd; }
+
+	public String getName() { return name; }
+
+	public String getPhone() { return phone; }
+	public void setPhone(String phone) { this.phone = phone; }
 }
 
 class LoginCheck {
 // 로그인용 아이디와 암호를 입력받는 클래스
 	public static void main(String[] args) {
+		ArrayList<MemberInfo> memberList = new ArrayList<MemberInfo>();	// 회원정보를 저장할 컬렉션
+		// memberList라는 ArrayList에는 무조건 MemberInfo형 인스턴스만 저장할 수 있게 생성
+		// memberList에 MemberInfo형 데이터만 저장되고 다른 형의 데이터가 들어오면 오류를 발생시킴
+		// memberList에 들어있는 데이터를 MemberInfo형으로 형변환할 때 따로 검사가 필요 없음
+
+		memberList.add(new MemberInfo("test1", "1234", "홍길동", "010-1234-5678"));
+		memberList.add(new MemberInfo("test2", "2345", "전우치", "010-1234-1234"));
+		memberList.add(new MemberInfo("test3", "3456", "임꺽정", "010-1234-4321"));
+		// add()메소드를 이용하여 회원정보를 memberList에 저장
+
 		Scanner scan = new Scanner(System.in);
 		System.out.print("아이디 : ");	String id = scan.nextLine().trim();
 		System.out.print("비밀번호 : ");	String pwd = scan.nextLine().trim();
+		// 아이디와 비밀번호를 입력받음 - trim()메소드를 이용하여 공백을 제거한 후 입력 받음
 
 		StrCheck sc = new StrCheck();
-		String idMsg = sc.chkID(id);
-		System.out.println(idMsg);
-		String pwdMsg = sc.chkPWD(pwd);
-		System.out.println(pwdMsg);
+		// StrCheck 형 인스턴스 sc 선언 및 생성
+
+		// 사용자가 입력한 아이디와 비밀번호를 검사(제약사항에 맞는지 검사)
+		boolean isId = sc.isChkID(id);
+		boolean isPwd = sc.isChkPWD(pwd);
+		if (!isId || !isPwd) {	// 아이디와 비밀번호를 문법에 맞게 입력하지 않았으면
+			System.out.println("다시 로그인을 시도하십시오.");
+			return;
+		}
+
+		// 실제 로그인 작업
+		for (int i = 0 ; i < memberList.size() ; i++) {
+			if (id.equals(memberList.get(i).getId()) && pwd.equals(memberList.get(i).getPwd())) {
+				System.out.println("로그인 성공");
+				System.out.print("아이디 : " + memberList.get(i).getId() + " / ");
+				System.out.print("비밀번호 : " + memberList.get(i).getPwd() + " / ");
+				System.out.print("이름 : " + memberList.get(i).getName() + " / ");
+				System.out.print("전화 : " + memberList.get(i).getPhone() + " / ");
+				break;
+			}
+		}
 	}
 }
