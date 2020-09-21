@@ -1,0 +1,73 @@
+import java.util.*;
+
+class MemberInfo3 {
+	private String id, pwd, name, phone;
+	private ArrayList addrList;	// 주소 저장용 리스트
+	public MemberInfo3(String id, String pwd, String name, String phone) {
+		this.id = id;	this.pwd = pwd;		this.name = name;	this.phone = phone;
+	}
+
+	public String getId() { return id; }
+
+	public String getPwd() { return pwd; }
+	public void setPwd(String pwd) { this.pwd = pwd; }
+
+	public String getName() { return name; }
+
+	public String getPhone() { return phone; }
+	public void setPhone(String phone) { this.phone = phone; }
+}
+
+class MemberAddr3 {
+// 회원 정보중 주소정보를 저장하는 클래스
+	private String zip, addr1, addr2;
+	public MemberAddr3(String zip, String addr1, String addr2) {
+		this.zip = zip;		this.addr1 = addr1;		this.addr2 = addr2;
+	}
+	public void setZip(String zip) { this.zip = zip; }
+	public void getZip() { return zip; }
+
+	public void setAddr1(String addr1) { this.addr1 = addr1; }
+	public void getAddr1() { return addr1; }
+
+	public void setAddr2(String addr2) { this.addr2 = addr2; }
+	public void getAddr2() { return addr2; }
+}
+
+class LoginCheck3 {
+	public static void main(String[] args) {
+		ArrayList<MemberInfo3> memberList = new ArrayList<MemberInfo3>();	// 회원정보를 저장할 컬렉션
+		// 회원 가입과 동시에 하나의 주소를 등록시킴
+		memberList.add(new MemberInfo3("test1", "1234", "홍길동", "010-1234-5678"));
+		memberList.add(new MemberInfo3("test2", "2345", "전우치", "010-1234-1234"));
+		memberList.add(new MemberInfo3("test3", "3456", "임꺽정", "010-1234-4321"));
+
+		Scanner scan = new Scanner(System.in);
+		System.out.print("아이디 : ");	String id = scan.nextLine().trim();
+		System.out.print("비밀번호 : ");	String pwd = scan.nextLine().trim();
+
+		StrCheck sc = new StrCheck();
+
+		boolean isId = sc.isChkID(id);
+		boolean isPwd = sc.isChkPWD(pwd);
+		if (!isId || !isPwd) {	// 아이디와 비밀번호를 문법에 맞게 입력하지 않았으면
+			System.out.println("다시 로그인을 시도하십시오.");
+			return;
+		}
+
+		boolean isLogin = false;	// 로그인 성공여부를 저장할 변수
+		for (int i = 0 ; i < memberList.size() ; i++) {
+			if (id.equals(memberList.get(i).getId()) && pwd.equals(memberList.get(i).getPwd())) {
+				isLogin = true;	// 로그인 성공
+				System.out.println("로그인 성공");
+				System.out.print("아이디 : " + memberList.get(i).getId() + " / ");
+				System.out.print("비밀번호 : " + memberList.get(i).getPwd() + " / ");
+				System.out.print("이름 : " + memberList.get(i).getName() + " / ");
+				System.out.print("전화 : " + memberList.get(i).getPhone());
+				break;
+			}
+		}
+
+		if (!isLogin)	System.out.println("로그인 실패\n다시 시도하십시오.");
+	}
+}
