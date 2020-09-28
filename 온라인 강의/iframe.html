@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        iframe 태그 : inline frame으로 body내의 내용들 가운데 원하는 위치에서 사용할 수 있음
+        - src="경로 및 파일명" : iframe으로 보여줄 파일을 지정
+        - width="픽셀값" : iframe의 넓이값
+        - height="픽셀값" : iframe의 높이값
+        - frameborder="숫자" : 테두리 두께
+    -->
+    <table width=700" cellpadding="5" cellspacing="1" bgcolor="black">
+        <tr bgcolor="white">
+            <th width="15%">작성자</th><th width="35%">홍길동</th>
+            <th width="15%">작성일</th><th width="35%">2020-09-28</th>
+        </tr>
+        <tr bgcolor="white">
+            <th>제목</th>
+            <td colspan="3">iframe의 흔한 사용예</td>
+        </tr>
+        <tr bgcolor="white">
+            <th>내용</th>
+            <td colspan="3">
+                <iframe width="600" height="330" src="https://www.youtube.com/embed/zsZKf9GJ0UE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
