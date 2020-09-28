@@ -1,0 +1,50 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<!--
+인용문에 대한 태그
+blockquote 태그 : 블록 단위의 인용문을 표현하는 태그로 내부에 블록요소를 이용하여 인용문 등록
+ - cite="출처" : 인용한 내용에 대한 출처 정보를 입력
+
+q 태그 : 문장 형태의 짧은 인용문을 표현하는 태그로 인라인 요소로 사용됨
+ - cite="출처" : 인용한 내용에 대한 출처 정보를 입력
+-->
+<blockquote cite="출처">
+	<p>블록 인용구</p>
+</blockquote>
+<p>웹의 창시자 팀 버너스 리경은 <q cite="http://www.w3.org">The power of the Web is in its universality, Access by everyone regardless of disability is an essential aspect.</q>라고 했습니다.</p>
+
+<!--
+축약어와 두문자어
+abbr 태그 : abbreviation. 축약어를 표현하는 태그
+acronym 태그 : initial letter. abbr과 비슷하나 머릿글자로 축약하는 태그
+
+두 태그 모두 크롬에서는 밑줄(점선)을 그어주나 IE에서는 밑줄이 없음
+-->
+<p>모니터 중 비교적 저렴한 <abbr title="Liquid Crystal Display">LCD</abbr>가 있다.</p>
+<p>우리나라의 정보국은 <acronym title="국가 정보원">국정원</acronym>이다.</p>
+
+<!--
+추가글과 삭제글
+ins 태그 : 추가글을 표현하는 태그로 밑줄이 그어짐
+del 태그 : 삭제글을 표현하는 태그로 취소선이 그어짐
+-->
+<dl>
+	<dt>좋은 상품</dt>
+	<dd><img src="img/a.jpg" width="50" /></dd>
+	<dd>상품정가 : <del>150,000원</del></dd>
+	<dd>할인가 : <ins>149,990원</ins></dd>
+</dl>
+
+<!--
+윗첨자와 아래첨자
+sup 태그 : 윗첨자를 표현하는 태그
+sub 태그 : 아래첨자를 표현하는 태그
+-->
+<p>X<sup>2</sup></p>
+<p>H<sub>2</sub>O</p>
+</body>
+</html>

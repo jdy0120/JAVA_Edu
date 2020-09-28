@@ -1,0 +1,37 @@
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="keyword" content="검색어" />
+	<meta name="subject" content="웹 문서 제목" />
+	<meta name="description" content="웹 문서 요약 정보" />
+	<meta name="author" content="제작자 정보" />
+	<meta name="copyright" content="저작권 정보" />
+	<title>Document</title>
+</head>
+<body>
+<!--
+html에서 엔터는 띄어쓰기로 인식되며, 여러 번 입력해도 하나만 인식됨 - <br />태그를 사용해야 함
+html에서 띄어쓰기는 여러 번 입력해도 하나만 인식됨 - &nbsp; 를 사용해야 함
+
+b 태그 : bold로 태그 범위내의 글자들을 굵게 보여줌
+strong 태그 : 범위내의 글자들을 강조하는 태그로 굵게 보여줌
+ - 강조의 의미를 가지는 태그이므로 <b>태그보다 <strong>태그를 사용해야 웹표준화에 맞는 용법
+
+i 태그 : italic으로 태그 범위내의 글자들을 기울임꼴로 보여줌
+em 태그 : 범위내의 글자들을 강조하는 태그로 기울임꼴로 보여줌
+ - 강조의 의미를 가지는 태그이므로 <i>태그보다 <em>태그를 사용해야 웹표준화에 맞는 용법
+address 태그 : 화면 하단의 회사 연락처나 저작권(copyright) 등의 회사 정보를 보여주는 곳
+ - i나 em처럼 기울임꼴인 태그
+
+font 태그 : 글자 서식에 관한 태그로 속성을 사용하지 않으면 아무런 효과도 없는 태그 - 근래에는 거의 사용하지 않음
+ - size="정수" : 1 ~ 6 사이의 값으로 3이 기본크기이며 작은 숫자는 작은 글씨를 큰 숫자는 큰 글씨를 표현함
+ - color="색상값" : 글자의 색상으로 영문 색상명이나 16진수로 표현된 RGB값을 사용(#000000 : 검정 ~ #FFFFFF : 흰색)
+ - face="글꼴명" : 범위내의 글꼴 변경 - 반드시 클라이언트에 있을 만한 글자체를 지정해야 함
+-->
+<b title="일본해 아니다.">동해</b> 물과 <strong title="한 번쯤 터질때도...">백두산</strong>이 마르고 닳도록<br />
+하느님이 보우하사&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<font size="5" color="lightgreen" face="궁서체">우리나라 만세</font><br /><br />
+<i>무궁화</i> 삼천리 <em>화려강산</em><br />
+<font color="#543ef2" face="딸기체">대한사람</font> 대한으로 길이 보전하세<br />
+</body>
+</html>
