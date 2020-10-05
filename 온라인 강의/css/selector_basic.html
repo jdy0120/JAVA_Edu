@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+    /* 전체 선택자 */
+        * { margin:0; }
+
+    /* type 선택자 */
+        h1 {color:red;} /* 현재 문서안의 모든 h1 태그의 글자색 빨간색으로 지정*/
+        p {color:blue;} /* 현재 문서안의 모든 p 태그의 글자색 파란색으로 지정*/
+
+    /* class 선택자 */
+        .note { color:green; }
+        .note2 { font-size:20px; }
+
+    /* id 선택자 */
+        #gnb { color:#828282; }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Type 선택자</h1>
+    <p>HTML의 모든 요소(element,tag)는 선택자로 사용할 수 있다.</p>
+    <p>HTML의 모든 요소(element,tag)는 선택자로 사용할 수 있다.</p>
+    <br /><br />
+    <h1>class 선택자와 id 선택자</h1>
+    <h2>class 선택자</h2>
+    <p class="note note2">문서 내에서 여러 번 사용할 수 있는 선택자로 요소명과 클래스명을 구분할 때는 점(.)을 이용</p>
+    <span class="note">p태그가 아니지만 class가 note인 요소</span><br />
+    <span class="note2">p태그가 아니지만 class가 note2인 요소</span>
+    <p>class명을 선택자로 사용할 경우 요소명을 생략할 수도 있음</p>
+    <br /><br />
+    <h2>id 선택자</h2>
+    <ul id="gnb">
+        <li>HOME</li>
+        <li>Member Join</li>
+        <li>Log-in</li>
+        <li>Site Map</li>
+    </ul>
+    <br /><br /><br /><br /><br /><br /><br /><br />
+</body>
+</html>
