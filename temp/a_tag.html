@@ -1,0 +1,30 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<!--
+a 태그 : anchor. 글자나 이미지 등에 링크를 걸아 다른 페이지로 이동시키는 태그
+ - href="경로 및 파일명" : 이동할 곳의 주소 지정으로 필수 속성임
+ - target="_self / _blank / _new / _parent / 창이름" : 링크를 통해 이동할 파일이 열릴 곳을 지정하는 속성
+ - title="문자열" : a 태그 영역에 마우스를 올리면 나타나는 툴팁같은 메시지
+	title속성은 범위를 가지는 모든 태그에서 사용할 수 있는 속성
+	 - 범위가 있는 태그 : 여는 태그와 닫는 태그로 분리된 태그들과 img태그
+
+경로지정
+ - 절대경로 : 현재 파일의 위치에 상관없이 루트(root : 드라이브나 사이트폴더를 의미)부터 시작하여 경로를 지정하는 법
+	예) d:\html폴더/파일 또는 http://사이트주소/경로 지정
+ - 상대경로 : 현재 파일의 위치에 따라 목적지의 경로를 지정하는 방법
+	../ : 현재 위치보다 한단계 위로 이동
+	./ : 현재 위치를 의미하며 생략가능
+-->
+<a href="font.html" target="_blank">Font html파일 열기</a>
+<!-- _blank : 클릭 할 때 마다 새 창(탭)을 계속 새롭게 띄워서 동작 -->
+<br /><br />
+<a href="h_tag.html" target="_new">H태그 html파일 열기</a>
+<!-- _new : 처음 클릭 할 때 새 창(탭)을 새롭게 띄워서 동작하며 이미 창이 있으면 그창을 보여줌 -->
+<br /><br />
+<a href="http://www.naver.com/" target="dfghk" title="네이버로 이동">NAVER</a>
+</body>
+</html>

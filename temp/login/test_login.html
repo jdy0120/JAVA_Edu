@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .body {
+            margin: 0;
+            padding: 0;
+        }
+        .login {
+            display: flex;
+        }
+        #login_text{
+            text-align: right;
+            margin: 10px;
+        }
+        #login_text p {
+            font-family: "굴림";
+        }
+        #login_text input {
+            border-color: black;
+            background-color: lightgray;
+            width: 150px;
+            height: 20px;
+        }
+        #login_button{
+            border-color: black;
+            background-color: gray;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 0;
+            width: 100px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <span class="login">
+        <div id="login_text">
+            <p>아이디 <input type="text"></p>
+            <p>암호 <input type="password"></p>
+        </div>
+        <button id="login_button"> 로그인 </button>
+    </span>
+    
+</body>
+</html>

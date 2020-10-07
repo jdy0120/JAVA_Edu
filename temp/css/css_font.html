@@ -1,0 +1,43 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	.family {
+		font-family:"궁서체", "Human Myeongjo", serif;
+		font-size:13px;		/* 글자 크기로 절대 또는 상대크기를 사용 */
+		font-weight:normal;	/* 글자 굵기 (normal / bold / 100~900 : 숫자값이 작을 수록 얇음) */
+		font-style:normal;	/* 기울임꼴 (normal / italic) */
+		font-variant:normal;/* 소문자를 대문자로 변형하지만, 크기는 대문자보다 작게 (normall / small-caps)*/
+		line-height:1.6;	/* 줄간격으로 글자크기를 기준으로 지정 (normal / em / % / 실수) */
+	}
+	strong { font-weight:normal; }
+	#font { font:bold normal small-caps 18px /1.8 "돋움", sans-serif; }
+	/*
+	font관련 속성들은 단축표기가 가능하며, 입력 순서를 지켜야 함
+	font : [font-weight | font-style | font-variant] | font-size | [/line-height] | font-family
+	여기에서 font-size와 font-family는 필수 입력사항이며, line-height는 입력시 슬래시를 먼저 입력해야 함
+	*/
+
+	.keyword { color:purple; }
+	/*
+	aqua, black, blue, fuchsia, gray, purple, lime, maroon, navy, olive, green, 
+	orange, red, silver, teal, white, yellow
+	*/
+	.hexa { color:#ff0000; }	/* 각 색상별 값이 동일하면 세글자로 줄여도 됨(#f00) */
+	.decimal { color:rgb(0, 255, 0); }		/* 10진수 0~255사이의 값으로 RGB를 표현 */
+	.percent { color:rgb(0%, 0%, 100%); }	/* 백분율 0~100사이의 값으로 RGB를 표현 */
+	</style>
+</head>
+<body>
+<h1>글자 관련 CSS 명령</h1>
+<p class="family">CSS에서 글꼴을 지정할 때는 <strong>font-family 속성</strong>을 사용하여 원하는 글꼴을 지정할 수 있다. 이 때 글꼴명을 복수로 지정할 수 있는데 쉼표로 구분하며 입력 순서가 지정 우선 순위가 된다.</p>
+<p id="font">글꼴을 복수로 지정하는 이유는 사용자의 시스템에 해당 글꼴이 없을 경우를 대비할 수 있지만 이 또한 없을 경우를 위해 마지막에 'serif', 'sans-serif', 'cursive', 'fantasy', 'monospace' 중 하는 지정한다.</p>
+<br />
+<p class="keyword">문자색을 black, white 등의 영문 색상명으로 지정할 수 있다.</p>
+<p class="hexa">문자색을 6자리의 16진수로 RGB형식으로 표현할 수 있다.</p>
+<p class="decimal">문자색을 총 9자리의 10진수로 RGB형식으로 표현할 수 있다.</p>
+<p class="percent">문자색을 백분율로 표현할 수 있다.</p>
+<br /><br /><br /><br /><br /><br />
+</body>
+</html>

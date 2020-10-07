@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        <fieldset>
+            <legend>납품자 정보</legend>
+            <ol>
+                <li><label for="name"> 납품자명</label> : <input type="text" placeholder="name" id = "name"/></li>
+                <li><label for="mail"> 전자메일</label> : <input type="email" placeholder="test@naver.com" id = "mail"/></li>
+                <li><label for="homepage"> 홈페이지</label> : <input type="url" placeholder="http://" id = "homepage"></li>
+            </ol>
+        </fieldset>
+        <fieldset>
+            <legend>납품정보</legend>
+            <ul>
+                <li>
+                    <label for="goodsname"> 상품이름</label> : 
+                    <select name="goods" id="goodsname">
+                        <option value="none"></option>
+                        <option value="pdt10001">pdt10001 런닝화</option>
+                        <option value="pdt10002">pdt10002 농구화</option>
+                        <option value="pdt10003">pdt10003 축구화</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="count"> 납품수량</label> : 
+                    <input type="number" placeholder="최소 10" id="count"/>
+                </li>
+                <li>
+                    <label for="grade"> 납품등급</label> : 
+                    <input type="range" id="grade" min="0" max="10" step="2">
+                </li>
+                <li>
+                    <label for="location"> 납품지역</label> : 
+                    <select size="4" multiple="multiple">
+                        <optgroup label="서울특별시">
+                            <option value="gangnam-gu">강남구</option>
+                            <option value="songpa-gu">송파구</option>
+                            <option value="jung-gu">중구</option>
+                        </optgroup>
+                        <optgroup label="경기도">
+                            <option value="gwacheon-si">과천시</option>
+                            <option value="bucheon-si">부천시</option>
+                            <option value="anyang-si">안양시</option>
+                        </optgroup>
+                    </select>
+                </li>
+            </ul>
+        </fieldset>
+        <div align="center">
+            <button>납품서 제출</button> &nbsp &nbsp
+            <button>다시 작성</button>
+        </div>
+    </form>
+</body>
+</html>

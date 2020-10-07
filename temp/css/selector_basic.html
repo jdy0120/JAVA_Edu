@@ -1,0 +1,44 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	/* 전체 선택자 */
+	/* * { margin:0; }		 현재 문서안의 모든 태그의 여백을 0으로 지정 */
+
+	/* type 선택자 */
+	h1 { color:red; }	/* 현재 문서안의 모든 h1태그의 글자색을 빨강으로 지정 */
+	p { color:blue; }	/* 현재 문서안의 모든 p태그의 글자색을 파랑으로 지정 */
+
+	/* class 선택자 */
+	.note { color:green; }	/* 현재 문서안에서 class명이 'note'인 모든 요소의 글자색을 녹색으로 지정 */
+	.note2 { font-size:20px; }	/* 현재 문서안에서 class명이 'note2'인 모든 요소의 글자크기를 20px로 지정 */
+	/* 한 요소가 여러 개의 class명을 가질 수 있음(띄어쓰기로 구분하여) */
+
+	/* id 선택자 */
+	#gnb { color:#828282; }	/* 현재 문서안에서 id명이 'gnb'인 요소의 글자색을 회색으로 지정 */
+	/* id는 한 화면에 하나만 존재해야 하지만 동일한 id가 있으면 오류를 발생시키지 않고 같이 동작됨 */
+	</style>
+</head>
+<body>
+<h1>Type 선택자</h1>
+<p>HTML의 모든 요소(element, tag)는 선택자로 사용할 수 있다.</p>
+<p>HTML의 모든 요소(element, tag)는 선택자로 사용할 수 있다.</p>
+<br />
+<h1>class 선택자와 id 선택자</h1>
+<h2>class 선택자</h2>
+<p class="note note2">문서 내에서 여러 번 사용할 수 있는 선택자로 요소명과 클래스명을 구분할 때는 점(.)을 이용</p>
+<span class="note">p태그가 아니지만 class가 note인 요소</span><br />
+<span class="note2">p태그가 아니지만 class가 note2인 요소</span>
+<p>class명을 선택자로 사용할 경우 요소명을 생략할 수도 있음</p>
+<br />
+<h2>id 선택자</h2>
+<ul id="gnb">
+	<li>HOME</li>
+	<li>Member Join</li>
+	<li>Log-in</li>
+	<li>Site Map</li>
+</ul>
+<br /><br /><br /><br /><br /><br /><br /><br />
+</body>
+</html>
