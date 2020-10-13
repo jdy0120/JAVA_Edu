@@ -1,0 +1,64 @@
+body {
+	color:#000000; font-size:12px; line-height:1.2;
+	font-family:"돋움", Dotum, "굴림", Gulim, Verdana, sans-serif;
+	background:url('../images/common/bg_body.gif') repeat-x;
+}
+
+a:link { color:#4f4f4f; text-decoration:none; }
+a:visited { color:#4f4f4f; text-decoration:none; }
+a:hover { color:#4f4f4f; text-decoration:none; }
+a:active { color:#4f4f4f; text-decoration:none; }
+a:focus { color:#4f4f4f; text-decoration:none; }
+
+.hand { cursor:pointer; }
+
+/* 숨김 스타일 */
+#header h2 {
+	position:absolute; overflow:hidden;
+	width:1px; height:1px; font-size: 0; line-height: 0;
+}
+
+/* 최상단 스타일 */
+#infoMenu {
+	text-align: right; margin-right: 77px;
+	font-size: 0.9em; padding: 8px 0 7px 0;
+}
+
+#infoMenu li { /* id가 infoMenu인 요소 안의 모든 li태그 */
+	display: inline;
+	background: url("../images/common/topnavi_bar.gif") no-repeat 0 3px;
+	
+}
+
+#infoMenu li a{
+	color: #676767;
+}
+
+#infoMenu li a:hover, #infoMenu li a:focus{ color:#000; }
+
+#infoMenu li:first-child {
+	background: none;
+}
+
+/* 로고 이미지의 위치 조절 */
+.logo {
+	position:absolute; top:35px; left: 45px;
+}
+
+/* 주 메뉴 영역 스타일 */
+#navigation {
+	width:842px; height: 43px; margin-left: 22px;
+	background: url("../images/common/sitemenu_bg.gif") no-repeat;
+}
+
+#navigation li {
+	float: left;
+	display: inline;
+}
+/* #navigation 안의li 태그들을 옆으로 올림 */
+#navigation li.first { 
+	margin-left: 200px;
+} /* #navigation 안의 첫번째 li 를 왼쪽 여백을 주어 옆으로 밀어줌(로고의 공간 확보) */
+
+#navigation li ul {position: absolute;}
+/* 서브메뉴로 본 메뉴의 크기 및 위치에 영향을 미치지 않게 하기 위해 absolute로 지정 */

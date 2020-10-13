@@ -1,0 +1,25 @@
+#wrapper {background: url(../images/common/wrap_bg.jpg) no-repeat top center;}
+
+#header{
+    position: relative; /* 다른 객체의 absolute position의 기준점으로 사용 */
+    margin:0 auto; /* 수평 가운데 정렬 */
+    width: 940px; height: 105px;
+    background: url("../images/common/bg_menubox.png") no-repeat;
+}
+
+#contents {
+    margin: 0 auto; width: 940px;
+    min-height: 400px; /* 최소 높이를 지정 */
+    padding-top: 30px; /* 배경 상단과 내용 사이의 간격 지정 */
+    background:url("../images/common/contents_box.png") no-repeat;
+}
+
+#slogan {
+    width: 886px; margin: 20px auto 0;
+}
+
+#footer {
+    height: 75px; margin-bottom: 15px;
+    background: url("../images/common/footerbg.gif") repeat-x;
+}
+
