@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<script language="javascript">
+
+  var num01 = 123;		//정수
+  var num02 = 123.45;		//실수
+  var num03 = 123e2;		//지수 123 X 100
+  var num04 = 123e-3;		//지수 : 123 X 0.001
+
+  document.write("num01 : " + num01 +"<br />num02 : " + num02 );
+  document.write("<br />num03 : " + num03 +"<br />num04 : " + num04 );
+
+  // 문자열
+  var str01 = "JavaScript...";
+  var str02 = 'JavaScript...';
+  var str03 = String("JavaScript...");
+  var str04 = new String("JavaScript...");
+  document.write("<br/>------------------------------<br/>");
+  document.write(str01 + " : " + typeof str01 + "<br />");
+  document.write(str02 + " : " + typeof str02 + "<br />");
+  document.write(str03 + " : " + typeof str03 + "<br />");
+  document.write(str04 + " : " + typeof str04 + "<br />");
+
+  document.write("<br/>----------------------------<br/>");
+
+  // 부울형(논리값)
+  var bool01 = true, bool02 = false; 
+  var bool03 = 12, bool04 = 0;		// true, false
+  // 숫자값은 0은 false이고, 0이 아닌 다른 숫자는 true로 취급
+  var bool05 = isNaN; // true, isNaN : is Not a Number로 숫자인지 여부를 의미
+  var bool06 = "ab", bool07 = ""; // true, false
+  // 문자열은 빈 문자열이면 false이고, 문자열이 들어있으면 true로 취급
+  var bool08 = null; // false, null값은 false로 취급(객체가 비었는지 여부)
+  var bool09; // false, undefined상태로 false로 취급
+  document.write(bool01 + " / " + bool02 + " / " + !!bool03 + "<br />");
+  document.write(!!bool04 + " / " + !!bool05 + " / " + !!bool06 + "<br />");
+  document.write(!!bool07 + " / " + !!bool08 + " / " + !!bool09);
+
+
+  // null & undefined형
+  var person01 = null, person02;
+  document.write(person01 + " " + person02 + "<br />");   // null, undefined
+  document.write("1 + null : " + (1 + null) + "<br />");  
+  // 1 + null : 1, 숫자와 연산시 null은 0으로 취급됨
+  document.write("1 + undefined : " + (1 + undefined) + "<br />");
+  // 1 + unddefined : NaN, undefined는 자료형이 정해지지 않았으므로 숫자가 아님(NaN)
+  document.write("\"abc\" + null : " + ("abc" + null) + "<br />");
+  document.write("\"abc\" + undefined : " + ("abc" + undefined));
+
+
+  document.write("<br/>----------------------------<br/>");
+
+  // 객체형
+  var car01 = {model:"BMW", color:"gray", speed:150};
+  // 객체 선언 후 바로 생성하면서 속성과 값을 입력
+  document.write("car01.model : " + car01.model + " / ");
+  document.write("car01.color : " + car01.color + " / ");
+  document.write("car01.speed : " + car01.speed + "<br / >");
+
+  var car02 = new Object();	// car02객체 생성
+  car02["model"] = "benz";	// car02객체에 'model'이라는 속성과 값을 지정
+  car02["color"] = "blue";	// car02객체에 'color'이라는 속성과 값을 지정
+  car02["speed"] = "110";
+  document.write("car02.model : " + car02.model + " / ");
+  document.write("car02.color : " + car02.color + " / ");
+  document.write("car02.speed : " + car02.speed + "<br />");
+
+  var arrNum = [1,2,3];
+  var arrStr = ["가","나","다"];
+  document.write(arrNum[0] + "::" + arrNum[1] + "::" + arrNum[2]);
+  document.write(arrStr[0] + "::" + arrStr[1] + "::" + arrStr[2]);
+
+  //숫자와 문자열의 형 변환
+  var v1 = 123, v2 = "123", v3=456;
+  document.write(v1+v2+"<br>");
+  document.write(v1+parseInt(v2)+"<br>");
+  document.write(v1+Number(v2)+"<br>");
+
+  //문자열을 숫자로 변환할 때에는 parseInt() 또는 Number()함수를 이용
+
+  document.write(v1+String(v3)+"<br>");
+</script>
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</body>
+</html>
