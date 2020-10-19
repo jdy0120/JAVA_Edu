@@ -106,6 +106,67 @@
   }
   document.write("while문을 이용하여 1~10까지의 합: " + w_sum);
   
+  var arrNum2 = [1,2,3,4,5,6,7,8,9,10];
+  document.write("<br><h2>break 사용</h2>");
+  // arrNum2에서 첫번째 짝수가 몇번째 값인지 구하여 출력
+  var seq = 0
+  var okay = false;
+  for (var i = 0 ; i < arrNum2.length; i++) {
+    if (arrNum2[i]%2 == 0){
+      document.write(i+"<br>");
+      okay = true;
+      break
+    }
+  }
+  if (!okay) {
+    document.write("짝수가 없습니다.");
+  }
+  
+  function print(x) {
+    document.write(x + "가 없습니다. <br>")
+  }
+  function print(x,y,z,k) { // 동일한 이름의 함수가 여러개일 경우 매개변수가 마지막 순서만 호출됨
+    document.write(x + "가" + y + "개 있고" + z + "가" + k + "개 있습니다. <br>")
+  }
+
+  function print(x,y) {
+    if (!y) {
+      document.write(x + "가 0개 있습니다." + "<br>");
+    } else{
+      document.write(x + "가" + y + "개 있습니다." + "<br>");
+    }
+  }
+
+  print("사과",10);
+  print("사과");
+  // 인수가 매개변수보다 적으면 입력안된 매개변수는 undefined로 취급됨
+  print("사과","수 천","딸기",20)
+  // 인수가 매개변수보다 많으면 초과된 인수는 무시한다.
+  document.write("<br>");
+  function print3(){
+    document.write(arguments[0]+"가"+arguments[1]+"개 있습니다.<br>");
+  }
+
+  print3("사과",10);
+  // 매개변수가 없는 함수에 인수를 넣으면 자동으로 arguments라는 배열이 생성되어 인수들을 사용할 수 있게 됨
+
+
+  function add2() {
+    if (arguments.length < 2) {
+      document.write("두 개 이상의 숫자를 입력하시오.<br>");
+    } else{
+      var sum = 0;
+      for (var key in arguments){
+        sum += key;
+      }
+      documents.write("합은 : " + sum + "입니다.<br>");
+    }
+  }
+  
+  add2(1);
+  add2(1,2);
+  add2(1,2,3);
+
 </script>
 
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

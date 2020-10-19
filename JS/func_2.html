@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        helloWord_01();
+        function helloWord_01(){
+            document.write("helloWord_01 ... JavaScript World...!<br>");
+        }
+
+        helloWord_02();
+        helloWord_02 = function(){
+            document.write("helloWord_02 ... JavaScript World...!<br>");
+        }
+        
+        helloWord_01(); // 명시적 함수 호출은 위치에 상관없이 실행됨
+        helloWord_02(); // 반드시 함수보다 아래에 위치시켜야 함
+
+        
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

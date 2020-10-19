@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var str01 = "val01=20";
+        var str02 = "val02=30";
+        document.write(str01 + str02);
+        document.write("<br>");
+        document.write(eval(str01)+eval(str02));
+        document.write("<br>");
+
+        var strNum1 = "16.23";
+        var strNum2 = "0xFF";
+        document.write("parseInt(strNum1) : " + parseInt(strNum1));
+        // 16.23의 정수부분 추출
+        document.write("<br>");
+        document.write("parseInt(strNum1,8) : " + parseInt(strNum1,8));
+        // 16.23을 8진수로 변환 후 정수부분 추출
+        document.write("<br>");
+        document.write("parseInt(strNum1,16) : " + parseInt(strNum1,16));
+        // 16.23을 16진수로 변환 후 정수부분 추출
+        document.write("<br>");
+        document.write("parseInt(strNum2) : " + parseInt(strNum2));
+        // 16진수 0xFF를 10진수로 변환 후 정수부분 추출
+        document.write("<br>");
+        document.write("<br>");
+        var strNum3 = "12", strNum4 = "12.34", strNum5 = "1.2e2",strNum6 = "1.23a";
+        document.write("parseFloat(\"12\") : " + parseFloat(strNum3));
+        document.write("<br>");
+        document.write("parseFloat(\"12.34\") : " + parseFloat(strNum4));
+        document.write("<br>");
+        document.write("parseFloat(\"1.2e2\") : " + parseFloat(strNum5));
+        document.write("<br>");
+        document.write("parseFloat(\"1.23a\") : " + parseFloat(strNum6));
+        document.write("<br>");
+        document.write("<br>");
+        var strNum9 = "123e5"
+        document.write("isFinite(\"123e5\") : " + isFinite("123e5"));
+        document.write("<br>");
+        document.write("isFinite(\"10/3\") : " + isFinite("10/3"));
+        document.write("<br>");
+
+        document.write("<br>");
+        document.write("<br>");
+        document.write("<br>");
+        document.write("isNaN(\"123abc\")" + isNaN("123abc"));
+        document.write("<br>");
+        document.write("isNaN(\"12345\")" + isNaN("12345"));
+
+        var person = {
+            firstName : "john",
+            lsatName : "Goodman",
+            fullName : function() {
+                return this.firstName + " " + this.lastName;
+            }
+        }
+        var myObject = {
+            firstName : "Marry",
+            lastName : "Lockman"
+        }
+
+        x = person.fullName(myObject );
+        document.getElementById("demo01").innerHTML = x;
+        y = person.fullName.call(myObject );
+        document.getElementById("demo02").innerHTML = 7;
+    </script>
+</head>
+<body>
+</body>
+</html>
