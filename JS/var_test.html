@@ -84,6 +84,28 @@
   //문자열을 숫자로 변환할 때에는 parseInt() 또는 Number()함수를 이용
 
   document.write(v1+String(v3)+"<br>");
+
+  var arrNum = [1,2,3,4,5,6,7,8,9,10];
+  var sum = 0;
+  for (var i = 0; i < arrNum.length; i++){
+    sum += arrNum[i];
+  }
+  document.write("for문을 이용하여 1~10까지의 합: " + sum + "<br>");
+  document.write(sum+"<br>");
+
+  // for~in문을 이용하여 arrNum배열의 값을 출력
+  for (var i in arrNum) {
+    document.write(arrNum[i]+ " ");
+  }
+  document.write("<br>");
+  var w_sum = 0;
+  var i = 0
+  while (i < 10){
+    w_sum += arrNum[i];
+    i += 1;
+  }
+  document.write("while문을 이용하여 1~10까지의 합: " + w_sum);
+  
 </script>
 
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
