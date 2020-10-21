@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function callAlert() {
+            alert("alert 창 실행\n 단순히 메시지 전달용으로 사용됨");
+        }
+        function callConfirm() {
+            if (confirm("어쩔??")) {
+                alert("[확인] 버튼 누름");
+            } else {
+                alert("[취소] 버튼 누름");
+            }
+            
+        }
+        function callPrompt() {
+            var val = prompt("도연");
+            if (val){
+                alert(eval(val));
+            } else{
+                alert("취소 되었습니다.")
+            }
+        }
+    </script>
+</head>
+<body>
+    
+    <input type="button" value="알림" onclick="callAlert();">
+    <input type="button" value="confirm" onclick="callConfirm();">
+    <input type="button" value="prompt" onclick="callPrompt();">
+</body>
+</html>

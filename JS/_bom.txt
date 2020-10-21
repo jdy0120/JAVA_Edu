@@ -1,0 +1,71 @@
+브라우저 객체(BOM : Browser Object Model)
+ - 웹브라우저가 가진 모든 객체를 의미
+ - 최상위에 window객체가 있고, 하위객체로 document, frames[], history, location, navigator, screen의 6개 객체가 존재함
+
+1. window 객체
+ - 모든 브라우저에서 지원되며, 브라우저 창을 나타내는 객체이다.
+ - 전역 변수나 함수 등은 자동으로 window객체의 멤버가 된다.
+ - 주요 속성
+closed : 창이 닫혀 있는지 여부
+innerHeight : 내용 영역의 높이
+innerWidth : 내용 영역의 넓이
+length : 현재 창의 <iframe> 요소 수
+name : 창 이름(fam 또는 팝업창, 새창의 name)으로 리턴받거나 설정할 수 있음
+outerHeight : 각종 도구모음, 스크롤 막대 등 포함한 창 외부의 높이
+outerWidth : 각종 도구모음, 스크롤 막대 등 포함한 창 외부의 넓이
+parent : 현재 창의 부모 창을 리턴
+screenLeft : 창의 상대적 x좌표값
+screenTop : 창의 상대적 y좌표값
+screenX : 화면을 기준으로 한 x좌표 값
+screenY : 화면을 기준으로 한 y좌표 값
+top : 가장 위의 브라우저 창을 리턴
+
+ - 주요 메소드
+alert() : 메시지 전달용 상자 - [확인]버튼만 있음
+blur() : 현재 창에서 포커스를 제거
+clearInterval() : setInterval()로 지정한 타이머 셋을 삭제
+clearTimeout() : setTimeout()로 지정한 타이머 셋을 삭제
+close() : 현재 창을 닫음
+confirm() : 사용자에게 확인을 받는 메시지 박스 - [확인]버튼과 [취소]버튼이 있음
+focus() : 현재 창에 포커스를 설정
+moveBy() : 현재 위치를 기준으로 창을 이동시킴
+moveTo() : 창을 지정한 위치로 이동시킴
+open() : 새 창이나 팝업창을 연다
+prompt() : 사용자에게 입력을 받는 메시지 박스
+resizeBy() : 지정된 픽셀을 기준으로 창의 크기를 조절
+resizeTo() : 지정된 넓이와 높이로 창의 크기를 조절
+setInterval() : 지정된 간격(밀리초)으로 함수등을 호출한다.
+setTimeout() : 지정된 밀리 초 후에 함수등을 호출한다.
+stop() : 창의 로딩을 중단시킴
+
+1-1. screen 객체
+ - window객체의 하위객체로 사용자 화면에 대한 정보를 담고 있는 객체
+ - 메소드는 없으며 속성들만 존재하는 객체
+ - 주요 속성
+screen.width: 화면의 넓이
+screen.height : 화면의 높이
+screen.availWidth : 작업 표시줄 등의 입터페이스를 제외한 화면 넓이
+screen.availHeight : 작업 표시줄 등의 인터페이스를 제외한 화면 높이
+
+1-2. location 객체
+ - window객체의 하위객체로 현재 페이지 주소(URL)에 대한 정보를 담고 있는 객체
+ - 공개 표준은 없으나 대부분의 주요 브라우저에서 지원해줌
+ - 주요 속성
+location.host : URL의 호스트 이름과 포트 번호를 리턴
+location.href : 현재 페이지의 URL을 리턴하거나 변경할 수 있음
+location.hostname : 웹 호스트의 도메인 이름을 리턴
+location.pathname : 현재 페이지의 경로와 파일 이름을 리턴
+location.origin : URL의 프로토콜, 호스트 이름 및 포트 번호를 리턴
+location.port : URL의 포트 번호를 리턴하거나 설정
+location.protocol : 사용된 웹 프로토콜(http or https)을 리턴
+location.assign : 새 문서를 로드
+
+
+1-3. history 객체
+ - window객체의 하위객체로 사용자가 방문한 URL을 포함하여 브라우저 기록을 담고 있는 객체
+ - 주요 속성
+history.length : history목록의 URL수
+ - 주요 메소드
+history.back() : '뒤로 가기'
+history.forward() : '앞으로 가기'
+history.go() : 지정한 숫자가 양수면 '앞으로 가기', 음수면 '뒤로 가기'

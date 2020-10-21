@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+        open() 메소드 : 팝업창이나 새 창을 열어주는 메소드
+        open("경로 및 파일명", "창 이름", "옵션들");
+         - 옵션 : width : 창의 넓이, height : 창의 높이, left : x좌표, top : y좌표,
+                    titlebar=yes | no | 1 | 0 : 제목 표시줄 표시 여부,
+                    toolbar=yes | no | 1 | 0 : 도구모음줄 표시 여부,
+                    resizable=yes | no | 1 | 0 : 크기 변경 가능 여부(IE 전용),
+                    scrollbarsyes | no | 1 | 0 : 스크롤바 표시 여부
+         */
+        function openPop1() {
+            var win = window.open("","","width=200,height=100");
+            win.document.write("<p>This is Popup window.</p>");
+        }
+        function openPop2() {
+            var win = window.open("window_popup.html","","width=300,height=200,top=540,left=960");
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="팝업창 열기1" onclick="openPop1();">
+    <input type="button" value="팝업창 열기2" onclick="openPop2();">
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var timer;
+        function alert2k(){
+            timer = setTimeout(function(){alert("hello");},2000);
+        }
+        function stopTimer() {
+            clearTimeout(timer);
+        }
+        var interval = setInterval(clock,1000);
+        function clock() {
+            var d = new Date();
+            document.getElementById("clock").innerHTML = d.toLocaleTimeString();
+        }
+        function stopClock() {
+            clearInterval(interval);
+        }
+    </script>
+</head>
+<body onload="window.resizeTo(300,500);">
+    <h2>
+        window_popup.html
+    </h2>
+    <input type="button" value="2초 뒤에 실행" onclick="alert2k();">
+    <input type="button" value="타임아웃 종료" onclick="stopTimer();">
+
+    <h2>clock</h2>
+    <p id="clock"></p>
+    <input type="button" value="시계멈춤" onclick="stopClock();">
+</body>
+</html>
