@@ -31,3 +31,23 @@
 3) HTML 요소 내용 변경
  - DOM으로 각 요소의 내용이나 속성등을 변경할 수 있음
  - HTML 요소의 내용 변경 : element.innerHTML = "new content"
+ - HTML 요소의 속성 변경 : element.attribute = "new value"
+ - HTML 요소의 속성 변경 : element.setAttribute("atrribute, value")
+
+4) 이벤트
+ - 사용자가 행하는 모든 종류의 행위를 통틀어 이벤트라 한다.
+ - 종류
+onblur		: 포커스가 빠져나갓을 때
+onclick		: 클릭 시
+onchange		: 선택값이 변경되었을 때(콤보박스에서 많이 사용됨)
+ondblclick	: 더블 클릭 시
+onfocus		: 포커스를 얻었을 때(textfield나 textarea에서 많이 사용)
+onload		: 페이지가 로드되었을 때(body에서 사용)
+onunload		: 페이지에서 벗어날 때
+onsubmit		: 양식을 제출할 때
+onmouseover : 마우스가 해당 영역에 들어섰을 때
+onmouseout	: 마우스가 해당 영역에서 빠져 나갔을 때
+onmousedown : 마우스 버튼클릭 시
+onmouseup	: 마우스 버튼을 눌렀다가 손을 땔 때
+onkeyup		: 키보드의 키를 누른 후 손을 뗄 때
+onkeydown	: 키보드의 키를 누를 때

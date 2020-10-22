@@ -221,3 +221,10 @@ min(x1,x2,...,xn) : 주어진 값들 중 최솟값 리턴
 pow(x,y) : x의 y승
 random() : 0과 1사이의 난수
 round(x) : 반올림
+
+Number 객체
+ - 숫자관련 객체
+ - 주요 메소드
+isNaN() : 값이 NaN인지 여부(숫자가 아니면 true)
+isFinite() : 값이 유리수인지 여부
+isInteger() : 값이 정수인지 여부

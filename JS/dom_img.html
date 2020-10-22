@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function chImg(img){
+            var big = document.getElementById("bigImg");
+            big.src = "images/" + img + ".jpg";
+        }
+        function chImg2(img) {
+            var big = document.getElementById("bigImg2");
+            big.src = "images/" + img + ".jpg";
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr><td colspan="3" align="center"> 
+            <img src="images/alam.jpg" width="300" height="400" id="bigImg2">
+        </td></tr>
+        <tr align="center">
+            <td><img src="images/alam.jpg" width="90" height="120" onmouseover="chImg2('alam');"></td>
+            <td><img src="images/dog.jpg"  width="90" height="120" onmouseover="chImg2('dog');"></td>
+            <td><img src="images/lion.jpg" width="90" height="120" onmouseover="chImg2('lion');"></td>
+        </tr>
+    </table>
+</body>
+</html>

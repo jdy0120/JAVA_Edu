@@ -1,0 +1,125 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function chkData(frm){
+            var name = frm.name.value;
+            var uid = frm.uid.value;
+            var pwd = frm.pwd.value;
+            var pwd2 = frm.pwd2.value;
+            var birth = frm.birth.value;
+            var gender = frm.gender;
+            var e1 = frm.e1.value;
+            var e2 = frm.e2.value;
+            var e3 = frm.e3.value;
+            var p1 = frm.p1.value;
+            var p2 = frm.p2.value;
+            var p3 = frm.p3.value;
+
+            if (name == "") {
+                alert("이름을 입력하세요.");
+                frm.name.focus();
+                return false;
+            }
+            if(uid == "") {
+                alert("아이디를 입력하세요.");
+                frm.uid.focus();
+                return false;
+            }
+            if(pwd == "") {
+                alert("비밀번호를 입력하세요.");
+                frm.pwd.focus();
+                return false;
+            }
+            if(pwd2 == "") {
+                alert("비밀번호를 확인을 입력하세요.");
+                frm.pwd2.focus();
+                return false;
+            }
+            if(birth == "") {
+                alert("생년월일을 입력하세요.");
+                frm.birth.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<form name="frmJoin" action="" method="post" onsubmit="return chkData(this);">
+<table width="700" cellspacing="0" cellpadding="0" border="0">
+<tr><td>
+	<table width="100%" bgcolor="#c1c1c1" cellspacing="1" cellpadding="5" border="0">
+	<tr bgcolor="#ffffff">
+	<th width="30%" bgcolor="#efefef">이름</th>
+	<td width="*"><input type="text" name="name"/></td>
+	</tr>
+	<tr bgcolor="#ffffff">
+	<th bgcolor="#efefef">아이디</th>
+	<td>
+		<input type="text" name ="uid"/>
+		<input type="button" value="아이디 중복 확인" /><br />
+		* 영문, 혹은 영문 숫자 조합으로만 작성하세요.
+	</td>
+	</tr>
+	<tr bgcolor="#ffffff">
+	<th bgcolor="#efefef">비밀번호</th>
+	<td><input type="password" name="pwd"/></td>
+	</tr>
+	<tr bgcolor="#ffffff">
+	<th bgcolor="#efefef">비밀번호 확인</th>
+	<td><input type="password" name="pwd2"/></td>
+    </tr>
+    </tr>
+    <tr bgcolor="#ffffff">
+    <th bgcolor="#efefef">생년월일(성별)</th>
+    <td>
+        <input type="text" name="birth"> 예) 19880515 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="radio" name="gender">남
+        <input type="radio" name="gender">여
+    </td>
+    </tr>
+	<tr bgcolor="#ffffff">
+	<th bgcolor="#efefef">이메일</th>
+	<td>
+		<input type="text" name="e1"/> @
+		<select name="e2">
+            <option value="">도메인 선택</option>
+            <option value="naver.com">네 이 버</option>
+            <option value="nate.com">네 이 트</option>
+            <option value="gmail.com">지 메 일</option>
+            <option value="self">직접 입력</option>
+        </select>
+        <input type="text" name="e3" id="e3">
+	</td>
+	</tr>
+	<tr bgcolor="#ffffff">
+	<th bgcolor="#efefef">휴대폰</th>
+	<td>
+		<select name="p1">
+			<option>010</option>
+			<option>011</option>
+			<option>016</option>
+			<option>019</option>
+		</select> -
+		<input type="text" size="5" maxlength="4" name="p2"/> -
+		<input type="text" size="5" maxlength="4" name="p2"/>
+	</td>
+	</tr>
+	<tr bgcolor="#ffffff">
+	<th bgcolor="#efefef">코멘트</th>
+	<td>
+		<textarea cols="60" rows="5" name="cmt">간단한 자기소개를 입력하세요.</textarea>
+	</td>
+	</tr>
+	</table>
+</td></tr>
+<tr><td align="center"><br />
+	<input type="submit" value="회원 가입" />&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="reset" value="다시 입력" />
+</td></tr>
+</table>
+</form>
+</body>
+</html>

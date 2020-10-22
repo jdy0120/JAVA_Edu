@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var flag = true;
+        var cnt = 0;
+        function change(kind) {
+            if (kind == 'content') {
+                flag = !flag;
+                var txt = document.getElementById("txt");
+                if (flag) {
+                    txt.innerHTML = "Hello!!";
+                } else {
+                    txt.innerHTML = "<strong>Good bye!!</strong>";
+                }
+            }else{
+                cnt++;
+                var txt = document.getElementById("txt");
+                if (cnt%4 ==1){
+                    txt.style.color = "red";
+                } else if (cnt%4 == 2){
+                    txt.style.color = "green";
+                } else if (cnt%4 == 3){
+                    txt.style.color = "blue";
+                } else {
+                    txt.style.color = "black";
+                }
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <p id="txt">Hello!</p>
+    <button onclick="change('content');">내용 변경</button>
+    <button onclick="change('color');">색상 변경</button>
+</body>
+</html>

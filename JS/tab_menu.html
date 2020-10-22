@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .menu {width:400px; height:300px;}
+        #menu1 {
+            background:red;
+            z-index: 3;
+            position: absolute;
+        }
+        #menu2 {
+            background:green;
+            z-index: 1;
+            position: absolute;
+        }
+        #menu3 {
+            background:blue;
+            z-index: 2;
+            position: absolute;
+        }
+    </style>
+    <script>
+        function changebackground(menu){
+            var menu1 = document.getElementById("menu1");
+            var menu2 = document.getElementById("menu2");
+            var menu3 = document.getElementById("menu3");
+
+            if (menu == "menu1") {
+                menu1.style.zIndex = 3;
+                menu2.style.zIndex = 2;
+                menu3.style.zIndex = 1;
+            }else if (menu == "menu2") {
+                menu1.style.zIndex = 1;
+                menu2.style.zIndex = 3;
+                menu3.style.zIndex = 2;
+            } else {
+                menu1.style.zIndex = 1;
+                menu2.style.zIndex = 2;
+                menu3.style.zIndex = 3;
+            }
+        }
+        function changebackground2(menu){
+            var menu1 = document.getElementById("menu1");
+            var menu2 = document.getElementById("menu2");
+            var menu3 = document.getElementById("menu3");
+
+            menu1.style.display = "none";
+            menu2.style.display = "none";
+            menu3.style.display = "none";
+            var obj = document.getElementById(menu);
+            obj.style.display = "block"
+        }
+        var cur_menu = "menu1";
+        function changebackground3(menu){
+            var obj1 = document.getElementById(cur_menu);
+            obj1.style.zIndex = 1;
+            var obj2 = document.getElementById(menu);
+            obj2.style.zIndex = 3;
+            cur_menu = menu;
+        }
+    </script>
+</head>
+<body>
+    <button onclick="changebackground3('menu1');">메뉴1</button>
+    <button onclick="changebackground3('menu2');">메뉴2</button>
+    <button onclick="changebackground3('menu3');">메뉴3</button>
+    <div class="menu" id="menu1"></div>
+    <div class="menu" id="menu2"></div>
+    <div class="menu" id="menu3"></div>
+</body>
+</html>
