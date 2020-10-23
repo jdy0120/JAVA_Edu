@@ -2,49 +2,86 @@
 <head>
 	<meta charset="UTF-8">
     <title>Document</title>
-    <script>
-        function chkData(frm){
-            var name = frm.name.value;
-            var uid = frm.uid.value;
-            var pwd = frm.pwd.value;
-            var pwd2 = frm.pwd2.value;
-            var birth = frm.birth.value;
-            var gender = frm.gender;
-            var e1 = frm.e1.value;
-            var e2 = frm.e2.value;
-            var e3 = frm.e3.value;
-            var p1 = frm.p1.value;
-            var p2 = frm.p2.value;
-            var p3 = frm.p3.value;
+    <style>
+        #e3 {display: none;}
+    </style>
+	<script>
+	function chkData(frm) {
+		var name = frm.name.value;		var uid = frm.uid.value;
+		var pwd = frm.pwd.value;		var pwd2 = frm.pwd2.value;
+		var birth = frm.birth.value;		var gender = frm.gender;
+		var e1 = frm.e1.value;		var e2 = frm.e2.value;		var e3 = frm.e3.value;
+		var p2 = frm.p2.value;		var p3 = frm.p3.value;
 
-            if (name == "") {
-                alert("이름을 입력하세요.");
-                frm.name.focus();
-                return false;
-            }
-            if(uid == "") {
-                alert("아이디를 입력하세요.");
-                frm.uid.focus();
-                return false;
-            }
-            if(pwd == "") {
-                alert("비밀번호를 입력하세요.");
-                frm.pwd.focus();
-                return false;
-            }
-            if(pwd2 == "") {
-                alert("비밀번호를 확인을 입력하세요.");
-                frm.pwd2.focus();
-                return false;
-            }
-            if(birth == "") {
-                alert("생년월일을 입력하세요.");
-                frm.birth.focus();
-                return false;
-            }
-            return true;
+		if(name == "") {
+				alert("이름을 입력하세요.");	frm.name.focus();		return false;
+		}
+		if(uid == "") {
+				alert("아이디을 입력하세요.");	frm.uid.focus();		return false;
+		}
+		if(pwd == "") {
+				alert("비밀번호를 입력하세요.");	frm.pwd.focus();		return false;
+		}
+		if(pwd2 == "") {
+				alert("비밀번호 확인을 입력하세요.");	frm.pwd2.focus();		return false;
+		}
+		if(birth == "" || birth.length < 8) {
+				alert("생일을 입력하세요.");	frm.birth.focus();		return false;
+		}
+        if (isNaN(birth)) {
+            alert("생일을 숫자로 입력하세요"); frm.birth.focus();
+            return false;
         }
-    </script>
+
+		var isChk = true; 		//라디오버튼이 선택 안되었을 경우
+		for (var i = 0; i < gender.length ; i++ ) {
+        // 동일한 이름(gender)을 가진 컨트롤들의 배열(gender) 길이 만큼 루프를 돔
+			if (gender[i].checked) {
+            // i인덱스에 해당하는 라이도 버튼이 선택되어 있으면
+            // ~.check에 논리값을 넣어주면 선택이 해제되거나 선택될 수 있음
+				isChk= false;
+				break;
+			}
+		}
+		if (isChk) {
+			alert("성별을 선택하세요."); return false;
+			
+		}
+		if(e1 == "") {
+			alert("이메일을 입력하세요.");	frm.e1.focus();		return false;
+		}
+		if(e2 == "") {
+			alert("도메인을 입력하세요.");	frm.e2.focus();		return false;
+		} else if(e2 == "self") {
+            if(e3 == "") {
+			alert("도메인을 입력하세요.");	frm.e3.focus();		return false;
+		    }
+        }
+		if(p2 == "" || p2.length < 4) {
+			alert("전화번호를 입력하세요.");	frm.p2.focus();		return false;
+		}
+        if (isNaN(p2)) {
+            alert("전화번호를 숫자로 입력하세요.");	frm.p2.focus();		return false;
+        }
+		if(p3 == "" || p3.length < 4) {
+			alert("전화번호를 입력하세요.");	frm.p3.focus();		return false;
+		}
+        if (isNaN(p3)) {
+            alert("전화번호를 숫자로 입력하세요.");	frm.p3.focus();		return false;
+        }
+
+        function showE3(val) {
+            var e3 = document.getElementById("e3");
+            if (val == "self") {
+                e3.style.display = "inline";
+            } else {
+                e3.style.display = "none";
+            }
+        }
+
+		return true;
+	}
+	</script>
 </head>
 <body>
 <form name="frmJoin" action="" method="post" onsubmit="return chkData(this);">
@@ -58,7 +95,7 @@
 	<tr bgcolor="#ffffff">
 	<th bgcolor="#efefef">아이디</th>
 	<td>
-		<input type="text" name ="uid"/>
+		<input type="text" name="uid"/>
 		<input type="button" value="아이디 중복 확인" /><br />
 		* 영문, 혹은 영문 숫자 조합으로만 작성하세요.
 	</td>
@@ -70,28 +107,25 @@
 	<tr bgcolor="#ffffff">
 	<th bgcolor="#efefef">비밀번호 확인</th>
 	<td><input type="password" name="pwd2"/></td>
-    </tr>
-    </tr>
-    <tr bgcolor="#ffffff">
-    <th bgcolor="#efefef">생년월일(성별)</th>
-    <td>
-        <input type="text" name="birth"> 예) 19880515 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="radio" name="gender">남
-        <input type="radio" name="gender">여
-    </td>
-    </tr>
+	</tr>
+	<tr bgcolor="#ffffff">
+	<th bgcolor="#efefef">생년월일(성별)</th>
+	<td><input type="text" name="birth" /> 예) 19940331
+	<input type="radio" name="gender"/> 남
+	<input type="radio" name="gender"/> 여 </td>
+	</tr>
 	<tr bgcolor="#ffffff">
 	<th bgcolor="#efefef">이메일</th>
 	<td>
 		<input type="text" name="e1"/> @
-		<select name="e2">
-            <option value="">도메인 선택</option>
-            <option value="naver.com">네 이 버</option>
-            <option value="nate.com">네 이 트</option>
-            <option value="gmail.com">지 메 일</option>
-            <option value="self">직접 입력</option>
-        </select>
-        <input type="text" name="e3" id="e3">
+		<select name="e2" onchange="showE3(this.value);">
+			<option value="">도메인 선택</option>
+			<option value="naver.com">네 이 버</option>
+			<option value="nate.com">네 이 트</option>
+			<option value="gmail.com">지 메 일</option>
+			<option value="self">직접 입력</option>
+		</select>
+			<input type="text" name="e3" id="e3"/>
 	</td>
 	</tr>
 	<tr bgcolor="#ffffff">
@@ -103,14 +137,14 @@
 			<option>016</option>
 			<option>019</option>
 		</select> -
-		<input type="text" size="5" maxlength="4" name="p2"/> -
-		<input type="text" size="5" maxlength="4" name="p2"/>
+		<input type="text" name="p2" size="5" maxlength="4" /> -
+		<input type="text" name="p3" size="5" maxlength="4" />
 	</td>
 	</tr>
 	<tr bgcolor="#ffffff">
 	<th bgcolor="#efefef">코멘트</th>
 	<td>
-		<textarea cols="60" rows="5" name="cmt">간단한 자기소개를 입력하세요.</textarea>
+		<textarea name="cmt" cols="60" rows="5" onfocus="this.value = '';">간단한 자기소개를 입력하세요.</textarea>
 	</td>
 	</tr>
 	</table>

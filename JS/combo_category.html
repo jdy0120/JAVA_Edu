@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var arrA = new Array(); // A분류에 속하는 서브메뉴를 저장할 배열
+        arrA[0] = new Option("","분류 선택 ");
+        arrA[1] = new Option("A001","A-001");
+        arrA[2] = new Option("A002","A-002");
+        arrA[3] = new Option("A003","A-003");
+
+        var arrB = new Array(); // B분류에 속하는 서브메뉴를 저장할 배열
+        arrB[0] = new Option("","분류 선택 ");
+        arrB[1] = new Option("B001","B-001");
+        arrB[2] = new Option("B002","B-002");
+        arrB[3] = new Option("B003","B-003");
+        function setCategory(obj,target) {
+            var x = obj.value;
+
+            for (var m = target.options.length - 1; m > 0; m--) {
+            // target의 option태그 개수를 기준으로 거꾸로 option태그들을 삭제시키는루프문
+                target.options[m] = null;
+            }
+            if(x != "") {
+                var selectedArray = eval("arr" + x);
+                for (var i = 0; i < selectedArray.length ; i++) {
+                    target.options[i] = new Option(selectedArray[i].value, selectedArray[i].text);
+                }
+                target.options[0].selected = true;
+            }   
+        }
+    </script>
+</head>
+<body>
+    <form name="frm">
+        <select name="cata1" onchange="setCategory(this, this.form.cata2);">
+            <option value="">분류 선택</option>
+            <option value="A">A분류</option>
+            <option value="B">B분류</option>
+        </select>
+        <select name="cata2" id="">
+            <option value="">분류 선택</option>
+        </select>
+    </form>
+</body>
+</html>

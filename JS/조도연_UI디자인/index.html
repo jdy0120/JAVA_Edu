@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var arrA = new Array(); // A분류에 속하는 서브메뉴를 저장할 배열
+        arrA[0] = new Option("","-소분류 선택-");
+        arrA[1] = new Option("A001","A001");
+        arrA[2] = new Option("A002","A002");
+        arrA[3] = new Option("A003","A003");
+
+        var arrB = new Array(); // B분류에 속하는 서브메뉴를 저장할 배열
+        arrB[0] = new Option("","-소분류 선택-");
+        arrB[1] = new Option("B001","B001");
+        arrB[2] = new Option("B002","B002");
+        arrB[3] = new Option("B003","B003");
+
+        var arrC = new Array(); // B분류에 속하는 서브메뉴를 저장할 배열
+        arrC[0] = new Option("","-소분류 선택-");
+        arrC[1] = new Option("C001","C001");
+        arrC[2] = new Option("C002","C002");
+        arrC[3] = new Option("C003","C003");
+        function setCategory(obj,target) {
+            var x = obj.value;
+
+            for (var m = target.options.length - 1; m > 0; m--) {
+            // target의 option태그 개수를 기준으로 거꾸로 option태그들을 삭제시키는루프문
+                target.options[m] = null;
+            }
+            if(x != "") {
+                var selectedArray = eval("arr" + x);
+                // cata1에서 선택한 값에 따라 필요한 배열을 selectedArray에 넣음
+
+                for (var i = 0; i < selectedArray.length ; i++) {
+                    target.options[i] = new Option(selectedArray[i].value, selectedArray[i].text);
+                }
+                target.options[0].selected = true;
+                // target의 option들 중 0번 인덱스에 해당하는 option태그를 선택
+            }   
+        }
+        function chkData(frm) {
+            var cata1 = frm.cata1.value;    var cata2 = frm.cata2.value;
+            var name = frm.name.value;      var brand = frm.brand.value;
+            var price = frm.price.value;    var img1 = frm.img1.value;
+            var img2 = frm.img2.value;      var img3 = frm.img3.value;
+            var detail_img = frm.detail_img.value;  var posting = frm.posting;
+
+            if (cata1 == "") {
+                alert("대분류를 입력하세요"); frm.cata1.focus(); return false;
+            }
+            if (cata2 == "") {
+                alert("소분류를 입력하세요"); frm.cata2.focus(); return false;
+            }
+            if (name == "") {
+                alert("상품명을 입력하세요"); frm.name.focus(); return false;
+            }
+            if (brand == "") {
+                alert("브랜드 이름을 입력하세요"); frm.brand.focus(); return false;
+            }
+            if (price == "") {
+                alert("가격을 입력하세요"); frm.price.focus(); return false;
+            }
+            if (isNaN(price)) {
+                alert("숫자로 입력하세요."); frm.price.focus(); return false;
+            }
+            if (img1 == "") {
+                alert("사진1을 입력하세요"); frm.img1.focus(); return false;
+            }
+            if (img2 == "") {
+                alert("사진2 입력하세요"); frm.img2.focus(); return false;
+            }
+            if (img3 == "") {
+                alert("사진3 입력하세요"); frm.img3.focus(); return false;
+            }
+            if (detail_img == "") {
+                alert("설명 이미지를 입력하세요"); frm.detail_img.focus(); return false;
+            }
+            var isChk = true;
+            for (var i = 0; i < posting.length ; i++ ) {
+                if (posting[i].checked) {
+                    isChk= false;
+                    break;
+                }
+            }
+            if (isChk) {
+                alert("게시 여부를 선택하세요"); return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    
+    <form name="frm" action="" method="post" onsubmit="return chkData(this);">
+        <table width="600" cellspacing="0" cellpadding="0" border="0">
+            <tr><td>
+                <table width="100%" cellspacing="0" cellpadding="5" border="1">
+                    <h2 align="center">상품 등록 폼</h2>
+                    <tr bgcolor="#ffffff">
+                        <th width="30%" >상품분류</th>
+                        <td width="*">
+                            <select name="cata1" onchange="setCategory(this,this.form.cata2);">
+                                <option value="">-대분류 선택-</option>
+                                <option value="A">A분류</option>
+                                <option value="B">B분류</option>
+                                <option value="C">C분류</option>
+                            </select>
+                            <select name="cata2" id="">
+                                <option value="">-소분류 선택-</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr bgcolor="#ffffff">
+                        <th>상품명</th>
+                        <td>
+                            <input type="text" name="name">
+                        </td>
+                    </tr>
+                    <tr bgcolor="#ffffff">
+                        <th>브랜드</th>
+                        <td>
+                            <select id="" name="brand">
+                                <option value="">-브랜드 선택-</option>
+                                <option value="nike">나 이 키</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr bgcolor="#ffffff">
+                        <th>상품가격</th>
+                        <td>
+                            <input type="text" name="price" id="price">
+                        </td>
+                    </tr>
+                    <tr bgcolor="#ffffff">
+                        <th>상품 이미지1</th>
+                        <td>
+                            <input type="file" accept=".jpg, .gif, .png, .jpeg"; name="img1">
+                        </td>
+                    </tr>
+                    <tr bgcolor="#ffffff">
+                        <th>상품 이미지2</th>
+                        <td>
+                            <input type="file" accept=".jpg, .gif, .png, .jpeg"; name="img2">
+                        </td>
+                    </tr>
+                    <tr bgcolor="#ffffff">
+                        <th>상품 이미지3</th>
+                        <td>
+                            <input type="file" accept=".jpg, .gif, .png, .jpeg"; name="img3">
+                        </td>
+                    </tr>
+                    <tr bgcolor="#ffffff">
+                        <th>설명 이미지</th>
+                        <td>
+                            <input type="file" accept=".jpg, .gif, .png, .jpeg"; name="detail_img">
+                        </td>
+                    </tr>
+                    <tr bgcolor="#ffffff">
+                        <th>특별 상품</th>
+                        <td>
+                            <input type="checkbox">HIT 상품
+                            <input type="checkbox">BEST 상품
+                            <input type="checkbox">NEW 상품
+                        </td>
+                    </tr>
+                    <tr bgcolor="#ffffff">
+                        <th>게시 여부</th>
+                        <td>
+                            <input type="radio" name="posting">게시
+                            <input type="radio" name="posting">미게시
+                        </td>
+                    </tr>
+                </table>
+            </td></tr>
+            <tr><td align="center"><br>
+                <input type="submit" value="상품 등록">&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="reset" value="다시 입력">
+            </td></tr>
+        </table>
+    </form>
+</body>
+</html>
