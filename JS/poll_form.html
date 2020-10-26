@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #question {width:350px; height: 25px;}
+        #exCnt {width: 170px; height: 25px;}
+        .ex { width: 170px; height: 25px; margin: 3px 0;}
+        #ex3,#ex4,#ex5,#ex6,#ex7,#ex8,#ex9,#ex10 {display: none;}
+        #ex2,#ex4,#ex6,#ex8,#ex10 {margin-left: 5px;}
+    </style>
+    <script>
+        function showExam(exCnt) { // 설문조사 보기의 개수를 매개변수에 받음
+            var cnt = parseInt(exCnt); // 받아온 보기 개수를 정수로 변경
+            for (var i = 3; i <= 10 ; i++){
+                // 설문보기 중 보여줄 것인지 아닌지 여부를 검사할 for문(1,2번은 무조건 보이기)
+                var obj = document.getElementById("ex"+i);
+                // 설문보기 텍스트 필드를 객체로 받아옴
+                if (i <= cnt) {
+                // 현재 설문보기 번호가 보기 개수 이하일 경우
+                    obj.style.display = "inline";
+                } else {
+                // 현재 설문 보기 번호가 보기 개수 초과일 경우
+                    obj.value = "";
+                    obj.style.display = "none";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="frmPoll" action="" method="post">
+        <fieldset>
+            <legend>설문조사 입력 폼</legend>
+            <table width="600" cellpadding="5">
+                <tr>
+                    <th width="15%">질문 내용</th>
+                    <td width="*"><input type="text" id="question" name="question"></td>
+                </tr>
+                <tr>
+                    <th>보기 개수</th>
+                    <td>
+                        <select name="exCnt" id="exCnt" onchange="showExam(this.value);">
+                            <option value="2">2 개</option>
+                            <option value="3">3 개</option>
+                            <option value="4">4 개</option>
+                            <option value="5">5 개</option>
+                            <option value="6">6 개</option>
+                            <option value="7">7 개</option>
+                            <option value="8">8 개</option>
+                            <option value="9">9 개</option>
+                            <option value="10">10 개</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>보기 내용</th>
+                    <td>
+                        <input type="text" class="ex" id="ex1" placeholder="1번 보기">
+                        <input type="text" class="ex" id="ex2" placeholder="2번 보기">
+                        <input type="text" class="ex" id="ex3" placeholder="3번 보기">
+                        <input type="text" class="ex" id="ex4" placeholder="4번 보기">
+                        <input type="text" class="ex" id="ex5" placeholder="5번 보기">
+                        <input type="text" class="ex" id="ex6" placeholder="6번 보기">
+                        <input type="text" class="ex" id="ex7" placeholder="7번 보기">
+                        <input type="text" class="ex" id="ex8" placeholder="8번 보기">
+                        <input type="text" class="ex" id="ex9" placeholder="9번 보기">
+                        <input type="text" class="ex" id="ex10" placeholder="10번 보기">
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+</body>
+</html> 

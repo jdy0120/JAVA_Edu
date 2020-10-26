@@ -13,20 +13,28 @@
 		var e1 = frm.e1.value;		var e2 = frm.e2.value;		var e3 = frm.e3.value;
 		var p2 = frm.p2.value;		var p3 = frm.p3.value;
 
+		
+
 		if(name == "") {
-				alert("이름을 입력하세요.");	frm.name.focus();		return false;
+			alert("이름을 입력하세요.");	frm.name.focus();		return false;
 		}
 		if(uid == "") {
-				alert("아이디을 입력하세요.");	frm.uid.focus();		return false;
+			alert("아이디을 입력하세요.");	frm.uid.focus();		return false;
+		}else if (uid.length < 4) { // 아이디를 4자 미만으로 입력했으면
+			alert("아이디는 4~20자 이내로 입력하세요.");
+			frm.name.select(); return false;
+		}else if (uid.charAt(0).toLowerCase() < 'a' && uid.charAt(0).toLowerCase() > 'z') { // 아이디의 첫글자가 영문이 아니면
+			alert("아이디의 첫글자는 반드시 영문자로 입력해야 합니다.");
+			frm.name.value = ""; return false;
 		}
 		if(pwd == "") {
-				alert("비밀번호를 입력하세요.");	frm.pwd.focus();		return false;
+			alert("비밀번호를 입력하세요.");	frm.pwd.focus();		return false;
 		}
 		if(pwd2 == "") {
-				alert("비밀번호 확인을 입력하세요.");	frm.pwd2.focus();		return false;
+			alert("비밀번호 확인을 입력하세요.");	frm.pwd2.focus();		return false;
 		}
 		if(birth == "" || birth.length < 8) {
-				alert("생일을 입력하세요.");	frm.birth.focus();		return false;
+			alert("생일을 입력하세요.");	frm.birth.focus();		return false;
 		}
         if (isNaN(birth)) {
             alert("생일을 숫자로 입력하세요"); frm.birth.focus();
@@ -70,6 +78,7 @@
             alert("전화번호를 숫자로 입력하세요.");	frm.p3.focus();		return false;
         }
 
+
         function showE3(val) {
             var e3 = document.getElementById("e3");
             if (val == "self") {
@@ -78,35 +87,41 @@
                 e3.style.display = "none";
             }
         }
-
+		
 		return true;
+		
+	}
+	function chkId(){
+		// chk_id.html, w : 300, h : 200
+		window.open("chk_id.html","popup","width=300,height=200");
 	}
 	</script>
 </head>
 <body>
 <form name="frmJoin" action="" method="post" onsubmit="return chkData(this);">
+<input type="hidden" name="isUnique" value="">
 <table width="700" cellspacing="0" cellpadding="0" border="0">
 <tr><td>
 	<table width="100%" bgcolor="#c1c1c1" cellspacing="1" cellpadding="5" border="0">
 	<tr bgcolor="#ffffff">
 	<th width="30%" bgcolor="#efefef">이름</th>
-	<td width="*"><input type="text" name="name"/></td>
+	<td width="*"><input type="text" name="name" maxlength="20" /></td>
 	</tr>
 	<tr bgcolor="#ffffff">
 	<th bgcolor="#efefef">아이디</th>
 	<td>
-		<input type="text" name="uid"/>
-		<input type="button" value="아이디 중복 확인" /><br />
+		<input type="text" name="uid" maxlength="20" readonly="readonly"/>
+		<input type="button" value="아이디 중복 확인" onclick="chkId();"/><br />
 		* 영문, 혹은 영문 숫자 조합으로만 작성하세요.
 	</td>
 	</tr>
 	<tr bgcolor="#ffffff">
 	<th bgcolor="#efefef">비밀번호</th>
-	<td><input type="password" name="pwd"/></td>
+	<td><input type="password" name="pwd" maxlength="20"/></td>
 	</tr>
 	<tr bgcolor="#ffffff">
 	<th bgcolor="#efefef">비밀번호 확인</th>
-	<td><input type="password" name="pwd2"/></td>
+	<td><input type="password" name="pwd2" maxlength="20"/></td>
 	</tr>
 	<tr bgcolor="#ffffff">
 	<th bgcolor="#efefef">생년월일(성별)</th>
