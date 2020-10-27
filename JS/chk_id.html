@@ -23,6 +23,13 @@
                 msg.innerHTML = "<span id='txtRed'>이미 사용 중인 아이디 입니다.</span>"
             }
         }
+        function apply() {
+            var uid = document.frmID.uid.value;
+            opener.document.frmJoin.uid.value = uid;
+            self.close();
+        }
+        // opener를 이용하는 경우 크롬에서는 동작이 안될 수도 있음
+        // 크롬은 도메인이 있어야 동작되므로 아파치 등의 웹서버를 통해 작업해야 함
     </script>
 </head>
 <body onload="document.frmId.uid.focus();">
@@ -36,7 +43,7 @@
         </td></tr>
         <tr><td align="center"><p id="msg">검색할 아이디를 입력하세요.</p></td></tr>
         <tr><td align="center">
-            <input type="button" value="적 용" id="btnOk">
+            <input type="button" value="적 용" id="btnOk" onclick="apply();">
             <input type="button" value="닫 기" onclick="self.close();">
         </td></tr>
     </table>

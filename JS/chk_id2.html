@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var uid = parent.document.frmJoin.uid2.value;
+        var mas = parent.document.getElementById("msg");
+        if (uid == "test11" || uid =="test12" || uid == "test13") {
+            msg.innerHTML = "<span id='txtRed'>이미 사용중인 아이디 입니다.</span>";
+            unique.value = ""; // 중복된 아이디라는 의미
+        } else {
+            msg.innerHTML = "<span id='txtBlue'>사용하실 수 있는 아이디 입니다.</span>";
+            unique.value = "y"; // 중복되지 않은 아이디라는 의미
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

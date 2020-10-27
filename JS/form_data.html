@@ -4,6 +4,9 @@
     <title>Document</title>
     <style>
         #e3 {display: none;}
+		.addr {width: 245px;}
+		#txtBlue { color:blue; }
+		#txtRed { color: red;}
     </style>
 	<script>
 	function chkData(frm) {
@@ -12,8 +15,6 @@
 		var birth = frm.birth.value;		var gender = frm.gender;
 		var e1 = frm.e1.value;		var e2 = frm.e2.value;		var e3 = frm.e3.value;
 		var p2 = frm.p2.value;		var p3 = frm.p3.value;
-
-		
 
 		if(name == "") {
 			alert("이름을 입력하세요.");	frm.name.focus();		return false;
@@ -95,9 +96,14 @@
 		// chk_id.html, w : 300, h : 200
 		window.open("chk_id.html","popup","width=300,height=200");
 	}
+
+	function searchZip() {
+		window.open("sch_zip.html","popup","width=500,height=400");
+	}
 	</script>
 </head>
 <body>
+<iframe src="" id="" frameborder="0"></iframe>
 <form name="frmJoin" action="" method="post" onsubmit="return chkData(this);">
 <input type="hidden" name="isUnique" value="">
 <table width="700" cellspacing="0" cellpadding="0" border="0">
@@ -113,6 +119,14 @@
 		<input type="text" name="uid" maxlength="20" readonly="readonly"/>
 		<input type="button" value="아이디 중복 확인" onclick="chkId();"/><br />
 		* 영문, 혹은 영문 숫자 조합으로만 작성하세요.
+	</td>
+	</tr>
+	</tr>
+	<tr bgcolor="#ffffff">
+	<th bgcolor="#efefef">아이디</th>
+	<td>
+		<input type="text" name="uid" maxlength="20"/>
+		아이디는 영문, 숫자 조합 4~20자 이내로 입력
 	</td>
 	</tr>
 	<tr bgcolor="#ffffff">
@@ -156,6 +170,15 @@
 		<input type="text" name="p3" size="5" maxlength="4" />
 	</td>
 	</tr>
+	<tr bgcolor="#ffffff">
+		<th bgcolor="#efefef">주소</th>
+		<td>
+			<input type="text" name="zip" size="5" maxlength="5" onclick="searchZip();" readonly="readonly">
+			<input type="button" value="우편번호검색" onclick="searchZip();"><br>
+			<input type="text" name="addr1" class="addr" readonly="readonly">
+			<input type="text" name="addr2" class="addr">
+		</td>
+		</tr>
 	<tr bgcolor="#ffffff">
 	<th bgcolor="#efefef">코멘트</th>
 	<td>

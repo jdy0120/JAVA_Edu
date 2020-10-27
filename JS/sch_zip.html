@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper { width: 500; height: 400; padding: 10px; }
+        #result { width: 450px; height: 300px; padding: 5px; overflow: auto; margin-bottom: 20px; border: 1px black solid;}
+        #result p {cursor: pointer; margin: 10px;}
+    </style>
+    <script>
+        function addr(val) {
+            var zip = val.substring(1,6);
+            var addr = val.substring(8);
+
+            opener.document.frmJoin.zip.value = zip;
+            opener.document.frmJoin.addr1.value = zip;
+
+            self.close();
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>우편번호 검색</h1>
+        <p>
+            동/읍/면/리 이름
+            <input type="text" name="dong">
+            <input type="button" value="검 색">
+        </p>
+        <div id="result">
+            <p onclick="addr(this.innerHTML);">[12345] 서울시 강남구 역삼동 ㅁㄴㅇㄴㅇㄹ</p>
+            <p onclick="addr(this.innerHTML);">[12345] 서울시 강남구 역삼동 ㅁㄴㅇㄴㅇㄹ</p>
+            <p onclick="addr(this.innerHTML);">[12345] 서울시 강남구 역삼동 ㅁㄴㅇㄴㅇㄹ</p>
+            <p onclick="addr(this.innerHTML);">[12345] 서울시 강남구 역삼동 ㅁㄴㅇㄴㅇㄹ</p>
+            <p onclick="addr(this.innerHTML);">[12345] 서울시 강남구 역삼동 ㅁㄴㅇㄴㅇㄹ</p>
+            <p onclick="addr(this.innerHTML);">[12345] 서울시 강남구 역삼동 ㅁㄴㅇㄴㅇㄹ</p>
+            <p onclick="addr(this.innerHTML);">[12345] 서울시 강남구 역삼동 ㅁㄴㅇㄴㅇㄹ</p>
+            <p onclick="addr(this.innerHTML);">[12345] 서울시 강남구 역삼동 ㅁㄴㅇㄴㅇㄹ</p>
+        </div>
+    </div>
+</body>
+</html>

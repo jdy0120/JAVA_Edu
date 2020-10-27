@@ -25,10 +25,13 @@
             }
             if(x != "") {
                 var selectedArray = eval("arr" + x);
+                // cata1에서 선택한 값에 따라 필요한 배열을 selectedArray에 넣음
+
                 for (var i = 0; i < selectedArray.length ; i++) {
                     target.options[i] = new Option(selectedArray[i].value, selectedArray[i].text);
                 }
                 target.options[0].selected = true;
+                // target의 option들 중 0번 인덱스에 해당하는 option태그를 선택
             }   
         }
     </script>
