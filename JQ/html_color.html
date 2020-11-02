@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .listitem { color:red; }
+        .head { color:green; }
+        .intro { color: blue; }
+        .main { color: yellow; }
+    </style>
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function() {
+        // 문서 로딩이 끝났으면 동작하라는 의미 - 이벤트 발생을 대기
+            $("#btn1").click(function() {
+            // 아이디가 btn1인 요소를 클릭하면
+                $("li").removeClass(function(n) {
+                // 문서의 모든 li태그에서 클래스를 삭제하면 삭제할 클래스는 함수의 리턴값으로 결정
+                    if (n == 0 || n == 1) return "listitem";
+                    // n의 값이 0이거나 1이면 listitem을 리턴(삭제할 클래스 지정)
+                    else return "";
+                    // 아니면 빈 문자열을 리턴(삭제하지 말라는 의미)
+                });
+            });
+            $("#btn2").click(function() {
+                $("h2,p").removeClass("head intro main");
+                // 문서내에 있는 h2와 p태그들의 클래스들 중 head, intro, main 클래스를 삭제
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>This is a heading</h1>
+    <ul>
+        <li class="listitem">1st Item</li>
+        <li class="listitem">2nd Item</li>
+        <li class="listitem">3rd Item</li>
+        <li class="listitem">4th Item</li>
+    </ul>
+    <button id="btn1">Remove Class</button>
+    <br><br>
+    <h2 class="head">This is a H2 tag.</h2>
+    <p class="intro">This is a paragraph.</p>
+    <p class="main">This is another paragraph.</p>
+    <button id="btn2">Remove many class</button>
+</body>
+</html>

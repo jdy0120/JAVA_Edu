@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main { color:red; }
+        .list_0 { color:red; }
+        .list_1 { color:blue; }
+        .list_2 { color:green; }
+        .list_3 { color:orange; }
+    </style>
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#btn1").click(function() {
+                $(".p1").toggleClass("main");
+                // p요소들 중 현재 클래스가 main인 요소는 클래스를 제거하고,
+                // main이 아닌 요소는 클래스를 main으로 지정(addClass)
+            });
+            $("#btn2").click(function() {
+                $("li").toggleClass(function(n) {
+                // 문서내의 li태그들을 배열로 취급하여 인덱스번호(n)를 가지고 함수를 호출
+                    return "list_" + n;
+                    // 문자열로 클래스명을 만들어 리턴
+                });
+            })
+        });
+    </script>
+</head>
+<body>
+    <p class="p1">This is a heading</p>
+    <p class="p1 main">This is a 2nd paragraph.</p>
+    <button id="btn1">Toggle class</button>
+    <br>
+    <ul>
+        <li class="list_0">1st Item</li>
+        <li class="list_1">2nd Item</li>
+        <li class="list_2">3rd Item</li>
+        <li class="list_3">4th Item</li>
+    </ul>
+    <button id="btn2">Toggle class 2</button>
+</body>
+</html>

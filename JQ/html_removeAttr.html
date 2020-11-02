@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #p1 { color:white; background:green; font-size: 20px; padding: 5px;}
+        .blue { color:white; background:blue; font-size: 20px; padding: 5px;}
+    </style>
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#btn1").click(function() {
+                $("p").removeAttr("style");
+            });
+            $("#btn2").click(function() {
+                $("p").removeAttr("id class");
+                // 모든 p태그 내의 id와 class속성 삭제
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>This is a heading</h1>
+    <p style="color:red;">This is a 1st paragraph.</p>
+    <p style="color:green;">This is a 2nd paragraph.</p>
+    <button id="btn1">Remove style attribute</button>
+    <br>
+    <p id="p1">This is 1stparagraph.</p>
+    <p class="blue">This is a 2nd paragraph.</p>
+    <button class="btn2">Remove id & class attribute</button>
+</body>
+</html>

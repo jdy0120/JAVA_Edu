@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ancestors * {display: block; border: 2px solid orange; color: blue; padding: 5px; margin: 15px;}
+    </style>
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#btn1").click(function() {
+                $("span").closest("ul").css({"color":"red","border":"2px solid green"});
+            });
+        });
+    </script>
+</head>
+<body class="ancestors"> body (great-great-grandparent)
+    <div style="width: 500px;">div (great-grandparent)
+        <ul>ul (second ancestor - second grandparent)
+            <ul>ul (first ancestor - first grandparent)
+                <li>li (direct parent)
+                    <span>span</span>
+                </li>
+            </ul>
+        </ul>
+    </div>
+    <button class="btn1">closest()</button>
+</body>
+</html>
