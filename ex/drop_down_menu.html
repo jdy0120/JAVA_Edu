@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>drop down</title>
+    <style>
+        #bigCategory { 
+            width: 210px; padding: 20px; text-align: center; cursor: pointer;
+            display: block; background-color: #d8b36e; border: 2px solid #000;
+        }
+        #smallCategory {
+            width: 210px; padding: 20px; display: none;
+            background: #d8b36e; border: 2px solid #000;
+        }
+    </style>
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#bigCategory").click(function() {
+                $("#smallCategory").slideToggle("slow");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="bigCategory">대분류</div>
+    <div id="smallCategory">Show me the the funny Firends of the Day
+        <img src="images/dog.jpg" id="img">
+    </div>
+</body>
+</html>

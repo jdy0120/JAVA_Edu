@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body { background: #656565; }
+        #sideMenu {
+            background: rgba(0,0,0,0.8); width: 200px; height: 100%;
+            top: 0; left: -200px; position: fixed;
+        }
+        #sideMenu ul {
+            margin-top: 40px;
+            padding: 0; top: 50px; left: 50px; position: absolute;
+        }
+        #sideMenu li {
+            margin: 0 0 20px; list-style: none;
+        }
+        #sideMenu li a { color: #fff; font-weight: bold; text-decoration: none; }
+        #sideMenu button {
+            background: rgba(0,0,0,0.8); position: absolute;
+            top: 150px; left: 200px; border: none;
+        }
+        button {cursor: pointer; margin: 0; padding: 0; border-bottom-right-radius: 10px; border-top-right-radius: 10px;}
+    </style>
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#btnMenu").click(function() {
+                $("#sideMenu").toggleClass("open");
+                if ($("#sideMenu").hasClass("open")) {
+                    $("#sideMenu").animate({left:"0px"},300);
+                    $("#imgMenu").attr("src","images/close.png");
+                }else {
+                    $("#sideMenu").animate({left:"-200px"},300);
+                    $("#imgMenu").attr("src","images/open.png");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div><h1>Creative jQuery Sidemenu</h1></div>
+
+    <div id="sideMenu">
+        <ul>
+            <li><a href="#">1번째 메뉴</a></li>
+            <li><a href="#">2번째 메뉴</a></li>
+            <li><a href="#">3번째 메뉴</a></li>
+        </ul>
+        <button id="btnMenu" onfocus="this.blur();"><img src="images/open.png" id="imgMenu" width="30" height="100"></button>
+    </div>
+</body>
+</html>

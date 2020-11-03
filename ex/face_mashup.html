@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body { background:#000; }
+        p { font-family: Tahoma, Arial sans-serif; color: #3f6; font-size: 12px; }
+        #top { position: absolute; left: 191px; top: 15px; z-index: 4; }
+        #container { position: absolute; left: 0; top: 0; z-index: 0; }
+        .lightning { display: none; position: absolute; left: 0; top: 0; z-index: 0; }
+        #frame { /* 액자 영역의 스타일 */
+            position: absolute; left:100px; top:100px; width: 545px; height: 629px;
+            background: url("images/frame.png"); z-index: 3; overflow: hidden;
+        }
+        #pic_box{ /* 얼굴 영역의 스타일 */
+            position: relative; left:91px; top: 84px; width: 367px; height: 460px; z-index: 2; overflow: hidden;
+        }
+    </style>
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            var headclix = 0, eyeclix = 0, noseclix = 0, mouthclix = 0;
+            // 각각 머리, 눈, 코, 입의 이미지를 클릭한 횟수를 저장할 변수들
+
+            $("#head").click(function() { // 머리 부분을 클릭할 경우 
+                if (headclix < 9) {
+                    headclix++;
+                } else {
+                    headclix = 0;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="top">
+        <img src="images/Monster_Mashup.png" alt="">
+        <p>그림을 클릭해서 몬스터의 얼굴을 만드세요.</p>
+    </div>
+    <div id="container">
+        <img src="images/lightning-01.jpg" class="lightning" id="lightning1" alt="">
+        <img src="images/lightning-02.jpg" class="lightning" id="lightning2" alt="">
+        <img src="images/lightning-03.jpg" class="lightning" id="lightning3" alt="">
+        <div id="frame">
+            <div id="pic_box">
+                <div id="head" class="face">
+                    <img id="head" class="face" src="images/headsstrip.jpg" alt="">
+                    <img id="eyes" class="face" src="images/eyesstrip.jpg" alt="">
+                    <img id="nose" class="face" src="images/nosesstrip.jpg" alt="">
+                    <img id="mouth" class="face" src="images/mouthsstrip.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
