@@ -1,0 +1,60 @@
+
+
+- insertBefore() : 선택한 요소 앞에 HTML 요소 삽입
+- prepend() : 선택한 요소의 시작 부분에 내용을 추가
+- prependTo() : 선택한 요소의 시작부분에 HTML 요소를 삽입
+
+- append()와 prepend() 함수에는 매개변수를 무한대로 입력할 수 있음
+	예) append("a","b","c")
+- addClass(classname-function(index, currentclass))
+	classname : 문자열로 클래스명을 여러 개 입력할 수도 있음(띄어쓰기로 구분)
+
+
+4. 요소 및 컨텐츠 삭제 메소드
+ - detach() : 선택한 요소를 제거(데이터 및 이벤트 유지)
+ - empty() : 선택한 요소로 부터 모든 자식 보드와 내용을 제거
+ - remove() : 선택한 요소를 제거(데이터 및 이벤트 삭제)
+ - removeClass() : 선택한 요소의 클래스를 제거
+ - removeAttr() : 선택한 요소의 속성을 제거
+ - removeProp() : prop() 메소드로 설정된 속성을 제거
+ - toggleClass() : 선택된 요소에서 하나 이상의 클래스를 추가/제거 토글
+ - unwrap() : 선택된 요소의 부모 요소를 제거
+
+ - detach(class or id), remove(class or id)
+	: 클래스이름들이나 이이디이름들을 인수로 넣으면 해당클래스들이나 아이디들만 삭제(쉼표로 구분)
+	예) detach(".클래스명, .클래스명2, ... , 클래스명n")
+
+ - removeClass(className | function(index[, currentclass]) { ... })
+ 	className : 삭제할 클래스명
+	function() : 삭제할 클래스명을 리턴하는 함수 - 클래스명을 구하는 작업을 하는 함수
+	 - index : 삭제할 요소들의 배열에서 사용하는 인덱스
+	 - currentclass : 선택한 요소의 현재 클래스명을 리턴
+ - toggleClass(className | function(index[, currentclass]) { ... }, switch)
+	className : toggle(제거와 추가를 번갈아 가면서 실행)할 클래스명
+	function() : toggle할 클래스명을 리턴하는 함수 - 클래스명을 구하는 작업을 하는 함수
+	 - index : toggle할 요소들의 배열에서 사용하는 인덱스
+	 - currentclass : 선택한 요소의 현재 클래스명을 리턴
+	switch : 선택항목으로 클래스를 추가할 것인지(true), 제거할 것인(false)지를 지정
+
+6. 요소 및 컨텐츠 변경 메소드
+ - replaceAll() : 선택한 요소를 새 html 요소로 변경
+ 	문법 : $(content).replaceAll(selector)
+	변경할 내용이 앞에 들어가고, 뒤에 변경할 선택자를 입력함
+ - replacewith() : 선택한 요소를 새 내용으로 변경
+ 	문법 : $(selector).replaceAll(content | function(index) { ... })
+	 - content : 변경할 내용
+
+ - hasClass() : 선택한 요소에 지정된 클래스 이름이 있는지 확인
+
+7. 래핑 메소드
+ - wrap() : 선택한 각 요소의 주위를 지정한 요소로 래핑
+ - wrapAll() : 선택한 모든 요소의 주위를 지정한 요소로 래핑
+ - wrapInner() : 선택한 각 요소의 내용 주위를 지정한 요소로 래핑
+ - unwrap() : wrap()이나 wrapAll()로 감싼것을 다시 원상태로 풀어주는 함수
+
+ - wrap(wrappingElement | function(index) { ... })
+ 	wrappingElement : 선택한 각 요소의 주위를 감쌀 요소명
+	function() : 선택한 각 요소의 주위를 감쌀 요소명을 리턴받음
+ - wrapInner(wrappingElement | function(index) { ... })
+ 	wrappingElement : 선택한 각 요소의 주위를 감쌀 요소명
+	function() : 선택한 각 요소의 내용 주위를 감쌀 요소명을 리턴받음

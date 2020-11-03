@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("button").click(function() {
+                $("body").append($("p:first").clone(true));
+                // 첫번째 p태그를 복제하여 body태그내에서 가장 뒤에 추가
+            });
+        });
+    </script>
+</head>
+<body>
+    <p>Click this paragraph to increase text size.</p>
+    <p>This is another paragraph.</p>
+    <button>Copy the first p element</button>
+</body>
+</html>

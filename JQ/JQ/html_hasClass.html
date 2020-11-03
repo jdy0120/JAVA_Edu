@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#btn1").click(function() {
+                alert($("p").hasClass("intro"));
+                // p태그들 중 intro라는 클래스를 가진 요소가 있는 지 여부를 논리값으로 리턴
+            });
+        });
+    </script>
+</head>
+<body>
+    <p>This is 1st paragraph.</p>
+    <p class="intro">This is 2nd paragraph.</p>
+    <p>This is 3rd paragraph.</p>
+    <button id="btn1">has class?</button>
+</body>
+</html>

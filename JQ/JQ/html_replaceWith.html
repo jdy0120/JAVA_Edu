@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#btn1").click(function() {
+                $("p").replaceWith("<h2>Hello world!</h2>");
+                // 모든 p태그를 지정한 내용을 가진 h2로 변경(내용도 같이 변경됨)
+                // replaceAll()함수와 인수의 위치가 바뀜
+            });
+            $("#btn2").click(function() {
+                $("p").replaceWith(function(n) {
+                    return "<address>자바를 java라!!</address>";
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <p>This is 1stparagraph.</p>
+    <p>This is 1stparagraph.</p>
+    <p>This is 1stparagraph.</p>
+    <button id="btn1">Replace With</button>
+    <button id="btn2">Replace With function</button>
+</body>
+</html>

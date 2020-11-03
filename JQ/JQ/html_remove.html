@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            var x;
+            $("#btn1").click(function() {
+                x = $("#p1").detach();
+            });
+            $("#btn2").click(function() {
+                $("body").prepend(x);
+            });
+            $("#btn3").click(function() {
+                x = $("#p3").remove();
+            });
+        });
+    </script>
+</head>
+<body>
+    <p id="p1">This is a 1st paragraph.</p>
+    <p id="p2">This is a 2nd paragraph.</p>
+    <p id="p3">This is a 3rd paragraph.</p>
+    <button id="btn1">detach() 1</button>
+    <button id="btn2">detach() 2</button>
+    <button id="btn3">remove</button>
+</body>
+</html>

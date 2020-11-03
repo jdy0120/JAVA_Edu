@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #text {width: 400px; padding: 0; margin: 0;}
+        div input { width: 100px; height: 100px; padding: 0; margin: 0;}
+    </style>
+    <script>
+        function isOperator(val) {
+            var tmp = document.getElementById(id).value;
+            var end = 'false';
+            if (val.length != 0) {
+                end = tmp.charAt(tmp.length-1);
+                if (end in ("+","-","*","/")) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }else {
+                return false;
+            }
+        }
+
+        function button_click(id) {
+            var i = document.getElementById(id).value;
+            if (!isNaN(i)) {
+                document.getElementById("text").value += i;
+            } else {
+                if (i == "=") {
+                    var val = document.getElementById("text").value;
+                    document.getElementById("text").value = eval(val);
+                } else if (i == "CE") {
+                    document.getElementById("text").value = "";
+                } else {
+                    document.getElementById("text").value += i;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="text" readonly="readonly" style="text-align: right;">
+    <div>
+        <input type="button" id="1" onclick="button_click(id);" value="1">
+        <input type="button" id="2" onclick="button_click(id);" value="2">
+        <input type="button" id="3" onclick="button_click(id);" value="3">
+        <input type="button" id="+" onclick="button_click(id);" value="+">
+    </div>
+    <div>
+        <input type="button" id="4" onclick="button_click(id);" value="4">
+        <input type="button" id="5" onclick="button_click(id);" value="5">
+        <input type="button" id="6" onclick="button_click(id);" value="6">
+        <input type="button" id="-" onclick="button_click(id);" value="-">
+    </div>
+    <div>
+        <input type="button" id="7" onclick="button_click(id);" value="7">
+        <input type="button" id="8" onclick="button_click(id);" value="8">
+        <input type="button" id="9" onclick="button_click(id);" value="9">
+        <input type="button" id="*" onclick="button_click(id);" value="*">
+    </div>
+    <div>
+        <input type="button" id="CE" onclick="button_click(id);" value="CE">
+        <input type="button" id="0" onclick="button_click(id);" value="0">
+        <input type="button" id="=" onclick="button_click(id);" value="=">
+        <input type="button" id="/" onclick="button_click(id);" value="/">
+    </div>
+</body>
+</html>

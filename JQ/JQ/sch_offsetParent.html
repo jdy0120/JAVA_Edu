@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grandparent {display:block;border: 2px solid orange; width: 70%; position: absolute; left: 10px; top: 50px;}
+        .parent {border: 1px solid black; margin: 10px; background: yellow;}
+    </style>
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("button").click(function() {
+                $("p").offsetParent().css("background","red");
+                // p요소에서 가장 가까운 요소(기준이 되는 요소)의 스타일 변경
+            });
+        });
+    </script>
+</head> 
+<body>
+    <div class="grandparent">div (grandparent)
+        <div class="parent">div (parent)
+            <p>offsetParent method...</p>
+        </div>
+    </div>
+    <button>offsetParent</button>
+</body>
+</html>
