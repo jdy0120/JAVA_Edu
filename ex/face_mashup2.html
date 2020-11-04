@@ -20,6 +20,9 @@
         .face {
             position: relative; left: 0; top: 0; z-index: 1; margin:0;
         }
+        #button_right {
+            display: flex; flex-direction: column-reverse; position: relative;
+        }
     </style>
     <script src="jquery-3.5.1.js"></script>
     <script>
@@ -46,40 +49,68 @@
             lightning_3(7000);
             // 번개치는 효과를 담당하는 함수들을 호출
 
-            $("#head").click(function() { // 머리 부분을 클릭할 경우 
+            $("#head_right").click(function() { // 머리 부분을 클릭할 경우 
                 if (headclix < 9) {
                     $("#head").animate({ left:"-=367px" },500);
                     headclix++;
                 } else {
-                    $("#head").animate({ left:"0px" },500);
-                    headclix = 0;
+                    alert("최종 이미지입니다.");
                 }
             });
-            $("#eyes").click(function() { // 눈 부분을 클릭할 경우 
+            $("#head_left").click(function() { // 머리 부분을 클릭할 경우 
+                if (headclix > 0) {
+                    $("#head").animate({ left:"+=367px" },500);
+                    headclix--;
+                } else {
+                    alert("처음 이미지입니다.");
+                }
+            });
+            $("#eyes_right").click(function() { // 눈 부분을 클릭할 경우 
                 if (eyeclix < 9) {
                     $("#eyes").animate({ left:"-=367px" },500);
                     eyeclix++;
                 } else {
-                    $("#eyes").animate({ left:"0px" },500);
-                    eyeclix = 0;
+                    alert("최종 이미지입니다.");
                 }
             });
-            $("#nose").click(function() { // 코 부분을 클릭할 경우 
+            $("#eyes_left").click(function() { // 눈 부분을 클릭할 경우 
+                if (eyeclix > 0) {
+                    $("#eyes").animate({ left:"+=367px" },500);
+                    eyeclix--;
+                } else {
+                    alert("처음 이미지입니다.");
+                }
+            });
+            $("#nose_right").click(function() { // 코 부분을 클릭할 경우 
                 if (noseclix < 9) {
                     $("#nose").animate({ left:"-=367px" },500);
                     noseclix++;
                 } else {
-                    $("#nose").animate({ left:"0px" },500);
-                    noseclix = 0;
+                    alert("최종 이미지입니다.");
                 }
             });
-            $("#mouth").click(function() { // 입 부분을 클릭할 경우 
+            $("#nose_left").click(function() { // 코 부분을 클릭할 경우 
+                if (noseclix > 0) {
+                    $("#nose").animate({ left:"+=367px" },500);
+                    noseclix--;
+                } else {
+                    alert("처음 이미지입니다.");
+                }
+            });
+            $("#mouth_right").click(function() { // 입 부분을 클릭할 경우 
                 if (mouthclix < 9) {
                     $("#mouth").animate({ left:"-=367px" },500);
                     mouthclix++;
                 } else {
-                    $("#mouth").animate({ left:"0px" },500);
-                    mouthclix = 0;
+                    alert("최종 이미지입니다.");
+                }
+            });
+            $("#mouth_left").click(function() { // 입 부분을 클릭할 경우 
+                if (mouthclix > 0) {
+                    $("#mouth").animate({ left:"+=367px" },500);
+                    mouthclix--;
+                } else {
+                    alert("처음 이미지입니다.");
                 }
             });
         });
@@ -94,13 +125,25 @@
         <img src="images/lightning-01.jpg" class="lightning" id="lightning1" alt="">
         <img src="images/lightning-02.jpg" class="lightning" id="lightning2" alt="">
         <img src="images/lightning-03.jpg" class="lightning" id="lightning3" alt="">
+        <div id="button_left">
+            <button id="head_left">&lt;&lt;</button>
+            <button id="eyes_left">&lt;&lt;</button>
+            <button id="nose_left">&lt;&lt;</button>
+            <button id="mouth_left">&lt;&lt;</button>
+        </div>
         <div id="frame">
             <div id="pic_box">
                 <img id="head" class="face" src="images/headsstrip.jpg" alt="">
                 <img id="eyes" class="face" src="images/eyesstrip.jpg" alt="">
                 <img id="nose" class="face" src="images/nosesstrip.jpg" alt="">
-                <img id="mouth" class="face" src="images/mouthsstrip.jpg" alt="">
+                <img id="mouth" class="face" src="images/mouthsstrip.jpg" alt="">               
             </div>
+        </div>
+        <div id="button_right">
+            <button id="head_right">&gt;&gt;</button>
+            <button id="eyes_right">&gt;&gt;</button>
+            <button id="nose_right">&gt;&gt;</button>
+            <button id="mouth_right">&gt;&gt;</button>
         </div>
     </div>
 </body>

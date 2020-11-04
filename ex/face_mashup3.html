@@ -38,49 +38,28 @@
         
 
         $(document).ready(function() {
-            var headclix = 0, eyeclix = 0, noseclix = 0, mouthclix = 0;
-            // 각각 머리, 눈, 코, 입의 이미지를 클릭한 횟수를 저장할 변수들
 
             lightning_1(4000);
             lightning_2(5000);
             lightning_3(7000);
             // 번개치는 효과를 담당하는 함수들을 호출
 
-            $("#head").click(function() { // 머리 부분을 클릭할 경우 
-                if (headclix < 9) {
-                    $("#head").animate({ left:"-=367px" },500);
-                    headclix++;
-                } else {
-                    $("#head").animate({ left:"0px" },500);
-                    headclix = 0;
-                }
+            $("#random").click(function() {
+                var rand_head = Math.floor(Math.random() * 10); // 머리번호
+                var rand_eyes = Math.floor(Math.random() * 10); // 눈번호
+                var rand_nose = Math.floor(Math.random() * 10); // 코번호
+                var rand_mouse = Math.floor(Math.random() * 10); // 입번호
+                // 0에서 9사이의 정수를 무작위로 추출
+                $("#head").animate({ left: (-1*rand_head*367) + "px" },500);
+                $("#eyes").animate({ left: (-1*rand_eyes*367) + "px" },500);
+                $("#nose").animate({ left: (-1*rand_nose*367) + "px" },500);
+                $("#mouth").animate({ left: (-1*rand_mouse*367) + "px" },500);
             });
-            $("#eyes").click(function() { // 눈 부분을 클릭할 경우 
-                if (eyeclix < 9) {
-                    $("#eyes").animate({ left:"-=367px" },500);
-                    eyeclix++;
-                } else {
-                    $("#eyes").animate({ left:"0px" },500);
-                    eyeclix = 0;
-                }
-            });
-            $("#nose").click(function() { // 코 부분을 클릭할 경우 
-                if (noseclix < 9) {
-                    $("#nose").animate({ left:"-=367px" },500);
-                    noseclix++;
-                } else {
-                    $("#nose").animate({ left:"0px" },500);
-                    noseclix = 0;
-                }
-            });
-            $("#mouth").click(function() { // 입 부분을 클릭할 경우 
-                if (mouthclix < 9) {
-                    $("#mouth").animate({ left:"-=367px" },500);
-                    mouthclix++;
-                } else {
-                    $("#mouth").animate({ left:"0px" },500);
-                    mouthclix = 0;
-                }
+            $("#reset").click(function() {
+                $("#head").animate({ left:"0px" },500);
+                $("#eyes").animate({ left:"0px" },500);
+                $("#nose").animate({ left:"0px" },500);
+                $("#mouth").animate({ left:"0px" },500);
             });
         });
     </script>
@@ -89,6 +68,8 @@
     <div id="top">
         <img src="images/Monster_Mashup.png" alt="">
         <p>그림을 클릭해서 몬스터의 얼굴을 만드세요.</p>
+        <button id="random">Randomize</button>
+        <button id="reset">Reset</button>
     </div>
     <div id="container">
         <img src="images/lightning-01.jpg" class="lightning" id="lightning1" alt="">
