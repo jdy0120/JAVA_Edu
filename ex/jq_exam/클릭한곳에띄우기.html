@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        #brd th,#brd td{
+            border-bottom: 1px solid #444444;
+            padding: 10px;
+        }
+        .pwdBox {
+            position: absolute;
+        }
+        .txt {
+            width: 100px;
+            height: 25px;
+        }
+    </style>
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#lock").click(function() {
+                
+            });
+        });
+    </script>
+    <script>
+        function showPwd(e,chk) {
+            var obj = document.getElementById("pwd"+chk);
+            // 게시글에 해당하는 비밀번호 입력란을 객체로 받아 옴
+            var x = e.clientX; // 이벤트가 발생한 곳의 X좌표값
+            var y = e.clientY; // 이벤트가 발생한 곳의 Y좌표값
+
+            obj.style.left = x+"px";
+            obj.style.top = (y-10)+"px";
+            obj.style.display = obj.style.display == "none" ? "block" : "none";
+            //document.getElementById("i_pwd"+chk).focus();
+
+            var frm = eval("document.frm"+chk);
+            // 이벤트가 일어난 비밀번호 박스의 폼을 받아옴
+            frm.pwd.focus();
+            // 비밀번호 박스안에 있는 패스워드필드에 커서를 넣음
+
+        }
+    </script>
+</head>
+<body>
+    <table width="700" cellspacing="0" cellpadding="0" id="brd">
+        <tr height="30">
+            <th width="10%">번호</th>
+            <th width="*">제목</th>
+            <th width="15%">작성자</th>
+            <th width="15%">작성일</th>
+            <th width="10%">조회수</th>
+        </tr>
+        <tr height="30" align="center">
+            <td>10</td>
+            <td align="left" onclick="showPwd(event, 1);">&nbsp;동해 물과 백두산이 마르고 닳도록 하느... <img src="images/lock.png" width="15" alt=""></td>
+            <td>홍길동</td>
+            <td>2020.11.05</td>
+            <td>123</td>
+            <div id="pwd1" class="pwdBox" style="display: none;">
+                <form name="frm1" method="post">
+                    <input type="password" id="i_pwd1" name="pwd"><input type="submit" value="삭제">
+                </form>
+            </div>
+        </tr>
+        <tr height="30" align="center">
+            <td>9</td>
+            <td align="left" onclick="showPwd(event,2);">&nbsp;동해 물과 백두산이 마르고 닳도록 하느... <img src="images/lock.png" width="15" alt=""></td>
+            <td>홍길동</td>
+            <td>2020.11.05</td>
+            <td>123</td>
+            <div id="pwd2" class="pwdBox" style="display: none;">
+                <form name="frm2" method="post">
+                    <input type="password" id="i_pwd2" name="pwd"><input type="submit" value="삭제">
+                </form>
+            </div>
+        </tr>
+        <tr height="30" align="center">
+            <td>8</td>
+            <td align="left">&nbsp;동해 물과 백두산이 마르고 닳도록 하느... </td>
+            <td>홍길동</td>
+            <td>2020.11.05</td>
+            <td>123</td>
+        </tr>
+        <tr height="30" align="center">
+            <td>7</td>
+            <td align="left">&nbsp;동해 물과 백두산이 마르고 닳도록 하느... <img src="images/lock.png" width="15" alt=""></td>
+            <td>홍길동</td>
+            <td>2020.11.05</td>
+            <td>123</td>
+        </tr>
+        <tr height="30" align="center">
+            <td>6</td>
+            <td align="left">&nbsp;동해 물과 백두산이 마르고 닳도록 하느... </td>
+            <td>홍길동</td>
+            <td>2020.11.05</td>
+            <td>123</td>
+        </tr>
+        <tr height="30" align="center">
+            <td>5</td>
+            <td align="left">&nbsp;동해 물과 백두산이 마르고 닳도록 하느... <img src="images/lock.png" width="15" alt=""></td>
+            <td>홍길동</td>
+            <td>2020.11.05</td>
+            <td>123</td>
+        </tr>
+        <tr height="30" align="center">
+            <td>4</td>
+            <td align="left">&nbsp;동해 물과 백두산이 마르고 닳도록 하느... </td>
+            <td>홍길동</td>
+            <td>2020.11.05</td>
+            <td>123</td>
+        </tr>
+        <tr height="30" align="center">
+            <td>3</td>
+            <td align="left">&nbsp;동해 물과 백두산이 마르고 닳도록 하느... </td>
+            <td>홍길동</td>
+            <td>2020.11.05</td>
+            <td>123</td>
+        </tr>
+        <tr height="30" align="center">
+            <td>2</td>
+            <td align="left">&nbsp;동해 물과 백두산이 마르고 닳도록 하느... </td>
+            <td>홍길동</td>
+            <td>2020.11.05</td>
+            <td>123</td>
+        </tr>
+        <tr height="30" align="center">
+            <td>1</td>
+            <td align="left">&nbsp;동해 물과 백두산이 마르고 닳도록 하느... </td>
+            <td>홍길동</td>
+            <td>2020.11.05</td>
+            <td>123</td>
+        </tr>
+    </table>
+</body>
+</html>

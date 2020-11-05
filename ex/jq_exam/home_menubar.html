@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html { font-size: 16px; line-height: 1.5;}
+        body { margin: 0; background: #efefef; color: #000; padding-top: 240px;}
+        h1,h2,h3,p,ul {margin: 0;}
+        ul {padding-left:0;}
+        ul li {list-style-type: none;}
+        a { color: inherit; text-decoration: none; }
+        img {vertical-align:middle;}
+        .dummy {margin: 0 auto; max-width: 32em; padding: 6em 0;}
+        .page-header {
+            background:#fff; position: absolute; width: 100%; min-width:960px;
+            -webkit-box-shadow: 0 1px 1px rgba(0,0,0.25);
+                    -box-shadow: 0 1px 1px rgba(0,0,0,0.25);
+        }
+        .sticky {
+            position: fixed; top: 0;
+        } /* 메뉴바가 스크롤에 의해 화면에서 사라질 때 사용할 스타일 */
+        .page-header .inner {margin: auto; width: 960px;}
+        .no-boxshadow .page-header {border-bottom: 1px solid #f2f2f2;}
+        .site-logo {
+            float:left; margin-left: -20px;
+        }
+        .primary-nav{
+            float: right; line-height: 65px; letter-spacing: 1px; text-transform: uppercase;
+        }
+        .primary-nav li {float: left; }
+        .primary-nav a {display: block; padding: 0 1.36em;}
+        .primary-nav a:hover {background: #f2f2f2;}
+    </style>
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.page-header').each(function() {
+                // 해당 선택자에 대해 무한루프를 돌면서 작업함
+                var $window = $(window), // 참 객체를 변수에 담음
+                $header = $(this), // .page-header 객체를 변수에 담음
+                headerOffsetTop = $header.offset().top;
+                // .page-header 객체의 최상위 좌표값을 변수에 담음
+                $window.on('scroll',function() {
+                // 창 객체(window)에 scroll 이벤트가 발생하면
+                    if ($window.scrollTop() > headerOffsetTop) {
+                    // 스크롤바의 최상위 위치가 .page-header 객체의 최상위 위치보다 크면(아래에 있으면)
+                    // $window.scrollTop() : 스크롤바의 최상위 위치
+                        $header.addClass('sticky');
+                        // $header에 sticky라는 클래스를 추가
+                    } else {
+                        $header.removeClass('sticky');
+                        // $header에서 sticky라는 클래스를 제거
+                    }
+                });
+                $window.trigger('scroll');
+                // window객체에 scroll이벤트를 발생시킴
+            });
+        });
+    </script>
+</head>
+<body>
+    <header class="page-header">
+        <div class="inner">
+            <h1 class="site-logo"><a href="#"><img src="images/logo.png" width="200" height="65" alt=""></a></h1>
+        </div>
+        <nav class="primary-nav">
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Work</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Rcruit</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="dummy">
+        <p>동해 물과 백두산이 마르고 닳도록 <br> 하느님이 보우하사 우리나라 만세<br><br></p>
+        <p>무궁화 삼천리 화려강산<br>대한 사람 대한으로 길이 보전하세</p>
+        <p></p>
+        <p>동해 물과 백두산이 마르고 닳도록 <br> 하느님이 보우하사 우리나라 만세<br><br></p>
+        <p>무궁화 삼천리 화려강산<br>대한 사람 대한으로 길이 보전하세</p>
+        <p></p>
+        <p>동해 물과 백두산이 마르고 닳도록 <br> 하느님이 보우하사 우리나라 만세<br><br></p>
+        <p>무궁화 삼천리 화려강산<br>대한 사람 대한으로 길이 보전하세</p>
+        <p></p>
+        <p>동해 물과 백두산이 마르고 닳도록 <br> 하느님이 보우하사 우리나라 만세<br><br></p>
+        <p>무궁화 삼천리 화려강산<br>대한 사람 대한으로 길이 보전하세</p>
+        <p></p>
+        <p>동해 물과 백두산이 마르고 닳도록 <br> 하느님이 보우하사 우리나라 만세<br><br></p>
+        <p>무궁화 삼천리 화려강산<br>대한 사람 대한으로 길이 보전하세</p>
+        <p></p>
+        <p>동해 물과 백두산이 마르고 닳도록 <br> 하느님이 보우하사 우리나라 만세<br><br></p>
+        <p>무궁화 삼천리 화려강산<br>대한 사람 대한으로 길이 보전하세</p>
+        <p></p>
+        <p>동해 물과 백두산이 마르고 닳도록 <br> 하느님이 보우하사 우리나라 만세<br><br></p>
+        <p>무궁화 삼천리 화려강산<br>대한 사람 대한으로 길이 보전하세</p>
+        <p></p>
+        <p>동해 물과 백두산이 마르고 닳도록 <br> 하느님이 보우하사 우리나라 만세<br><br></p>
+        <p>무궁화 삼천리 화려강산<br>대한 사람 대한으로 길이 보전하세</p>
+        <p></p>
+        <p>동해 물과 백두산이 마르고 닳도록 <br> 하느님이 보우하사 우리나라 만세<br><br></p>
+        <p>무궁화 삼천리 화려강산<br>대한 사람 대한으로 길이 보전하세</p>
+        <p></p>
+        <p>동해 물과 백두산이 마르고 닳도록 <br> 하느님이 보우하사 우리나라 만세<br><br></p>
+        <p>무궁화 삼천리 화려강산<br>대한 사람 대한으로 길이 보전하세</p>
+        <p></p>
+        <p>동해 물과 백두산이 마르고 닳도록 <br> 하느님이 보우하사 우리나라 만세<br><br></p>
+        <p>무궁화 삼천리 화려강산<br>대한 사람 대한으로 길이 보전하세</p>
+        <p></p>
+        <p>동해 물과 백두산이 마르고 닳도록 <br> 하느님이 보우하사 우리나라 만세<br><br></p>
+        <p>무궁화 삼천리 화려강산<br>대한 사람 대한으로 길이 보전하세</p>
+        <p></p>
+        <p>동해 물과 백두산이 마르고 닳도록 <br> 하느님이 보우하사 우리나라 만세<br><br></p>
+        <p>무궁화 삼천리 화려강산<br>대한 사람 대한으로 길이 보전하세</p>
+        <p></p>
+        <p>동해 물과 백두산이 마르고 닳도록 <br> 하느님이 보우하사 우리나라 만세<br><br></p>
+        <p>무궁화 삼천리 화려강산<br>대한 사람 대한으로 길이 보전하세</p>
+        <p></p>
+        <p>동해 물과 백두산이 마르고 닳도록 <br> 하느님이 보우하사 우리나라 만세<br><br></p>
+        <p>무궁화 삼천리 화려강산<br>대한 사람 대한으로 길이 보전하세</p>
+        <p></p>
+    </div>
+</body>
+</html>
