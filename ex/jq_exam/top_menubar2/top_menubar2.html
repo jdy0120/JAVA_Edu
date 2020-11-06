@@ -1,0 +1,139 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	html { font-size:16px; line-height:1.5; }
+	body { margin:0;background:#efefef; color:#000; padding-top:240px; }
+	h1, h2, h3, p, ul { margin:0; }
+	ul { padding-left:0; }
+	ul li { list-style-type:none; }
+	a { color:inherit; text-decoration:none; }
+	img { vertical-align:middle; }
+
+	.dummy { margin:0 auto; max-width:32em; padding:6em 0; }
+	.clearfix:before, .clearfix:after { content:" "; display:table; }
+	.clearfix:after { clear:both; }
+
+	.page-header {
+		background:#fff; position:absolute; width:100%; 
+		-webkit-box-shadow:0 1px 1px rgba(0, 0, 0, 0.25);
+				-box-shadow:0 1px 1px rgba(0, 0, 0, 0.25);
+	}
+	.page-header .inner { margin:auto; width:960px; }
+	.no-boxshadow .page-header { border-bottom:1px solid #f2f2f2; }
+	.site-logo { font-size:100%; float:left; margin-left:-20px; }
+	.primary-nav {
+		float:right; line-height:65px; 
+		letter-spacing:1px; text-transform:uppercase;
+	}
+	.primary-nav li { float:left; }
+	.primary-nav a { display:block; padding:0 1.36em; }
+	.primary-nav a:hover { background:#f2f2f2; }
+
+	.page-header-clone {
+		background:#000; opacity:0.9; 
+		position:fixed; top:-35px; width:100%;
+		-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+				box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+		-webkit-transition: top 0.25s;
+				transition: top 0.25s;
+	}
+	.page-header-clone > .inner { margin:auto; width:960px; }
+	.page-header-clone.visible { top:0; }
+	.page-header-clone:hover { opacity:1; }
+	.page-header-clone .site-logo { margin-left:8px; }
+	.page-header-clone .site-logo a {
+		display:block; width:143px; height:32px; overflow:hidden;
+	}
+	.page-header-clone .site-logo a:before {
+		content:url("../images/logo-small.png");
+		display:inline-block;
+	}
+	.page-header-clone .primary-nav {
+		font-size:14px; line-height:35px;
+	}
+	.page-header-clone .primary-nav a {
+		color:rgb(128, 128, 128);
+	}
+	</style>
+	<script src="../jquery-3.5.1.js"></script>
+	<script src="../jquery.ba-throttle-debounce.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		$(".page-header").each(function() {
+			var $window = $(window),	// 창 객체를 변수에 담음
+            $header = $(this), //.page-header 객체를 $header에 담음
+			$headerClone = $header.contents().clone(), 
+			// $header객체의 내용을 복제하여 $headerClone에 담음
+			$headerCloneContainer = $("<div class='page-header-clone'></div>"), 
+			// 헤더 복제의 컨테이너 생성
+			threshold = $header.offset().top + $header.outerHeight();
+
+			$headerCloneContainer.append($headerClone);
+			// $headerCloneContainer에 $headerClone추가
+			$headerCloneContainer.appendTo("body");
+			// $headerCloneContainer를 body의 마지막에 삽입
+
+			$window.on("scroll", $.throttle(1000 / 15, function() {
+				// 창에서 스크롤바가 움직이면 동작함
+				// 1000 / 15 : 1초당 15회 까지만 동작하게 제한을 둠
+				if ($window.scrollTop() > threshold) {
+					// 스크롤바의 위치가 헤더의 위치보다 크면(아래에 있으면)
+
+                    $headerCloneContainer.addClass('visible');
+					// 헤더 복제품인 $headerCloneContainer에 visible이라는 클래스를 추가하여 화면에 나타나게 함
+                } else {
+                    $headerCloneContainer.removeClass('visible');
+					// $headerCloneContainer를 안보이게 함
+                }
+			}));
+            $window.trigger('scroll');
+			// 창영역에 scroll 이벤트를 발생시킴
+		});
+	});
+	</script>
+</head>
+<body>
+<header class="page-header">
+	<div class="inner clearfix">
+		<h1 class="site-logo"><a href="#"><img src="../images/logo.png" width="200" height="65" /></a></h1>
+		<nav class="primary-nav">
+			<ul>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Work</a></li>
+				<li><a href="#">Blog</a></li>
+				<li><a href="#">Recruit</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+<div class="dummy">
+	<p>동해 물과 백두산이 마르고 닳도록<br/>하느님이 보우하사 우리나라 만세<br/><br/></p>
+	<p>무궁화 삼천리 화려강산<br/>대한 사람 대한으로 길이 보전하세<br/></p>
+	<p>동해 물과 백두산이 마르고 닳도록<br/>하느님이 보우하사 우리나라 만세<br/><br/></p>
+	<p>무궁화 삼천리 화려강산<br/>대한 사람 대한으로 길이 보전하세<br/></p>
+	<p>동해 물과 백두산이 마르고 닳도록<br/>하느님이 보우하사 우리나라 만세<br/><br/></p>
+	<p>무궁화 삼천리 화려강산<br/>대한 사람 대한으로 길이 보전하세<br/></p>
+	<p>동해 물과 백두산이 마르고 닳도록<br/>하느님이 보우하사 우리나라 만세<br/><br/></p>
+	<p>무궁화 삼천리 화려강산<br/>대한 사람 대한으로 길이 보전하세<br/></p>
+	<p>동해 물과 백두산이 마르고 닳도록<br/>하느님이 보우하사 우리나라 만세<br/><br/></p>
+	<p>무궁화 삼천리 화려강산<br/>대한 사람 대한으로 길이 보전하세<br/></p>
+	<p>동해 물과 백두산이 마르고 닳도록<br/>하느님이 보우하사 우리나라 만세<br/><br/></p>
+	<p>무궁화 삼천리 화려강산<br/>대한 사람 대한으로 길이 보전하세<br/></p>
+	<p>동해 물과 백두산이 마르고 닳도록<br/>하느님이 보우하사 우리나라 만세<br/><br/></p>
+	<p>무궁화 삼천리 화려강산<br/>대한 사람 대한으로 길이 보전하세<br/></p>
+	<p>동해 물과 백두산이 마르고 닳도록<br/>하느님이 보우하사 우리나라 만세<br/><br/></p>
+	<p>무궁화 삼천리 화려강산<br/>대한 사람 대한으로 길이 보전하세<br/></p>
+	<p>동해 물과 백두산이 마르고 닳도록<br/>하느님이 보우하사 우리나라 만세<br/><br/></p>
+	<p>무궁화 삼천리 화려강산<br/>대한 사람 대한으로 길이 보전하세<br/></p>
+	<p>동해 물과 백두산이 마르고 닳도록<br/>하느님이 보우하사 우리나라 만세<br/><br/></p>
+	<p>무궁화 삼천리 화려강산<br/>대한 사람 대한으로 길이 보전하세<br/></p>
+	<p>동해 물과 백두산이 마르고 닳도록<br/>하느님이 보우하사 우리나라 만세<br/><br/></p>
+	<p>무궁화 삼천리 화려강산<br/>대한 사람 대한으로 길이 보전하세<br/></p>
+	<p>동해 물과 백두산이 마르고 닳도록<br/>하느님이 보우하사 우리나라 만세<br/><br/></p>
+	<p>무궁화 삼천리 화려강산<br/>대한 사람 대한으로 길이 보전하세<br/></p>
+</div>
+</body>
+</html>
