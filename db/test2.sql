@@ -123,12 +123,144 @@ call sp_ord_list_in('2011160001','test1','','','','','홍길동','010-1234-5678'
 select * from tm_order_list;
 
 
--- 주문상세테이블에 주문정보를 입력하는 프로시저 sp_ord_detail_in을 작성
+-- 주문상세테이블에 주문정보를 입력하는 프로시저 sp_ord_detail_in을 작성 insert
 delimiter $$
 create procedure sp_ord_detail_in(
-	clidx int, mlid varchar(50), clcnt int, clopt varchar(200)
+	olid varchar(10), plidx int, odcnt int, odopt varchar(200), odprice int
+)
+begin
+	insert into tm_order_detail (ol_id,pl_idx,od_cnt,od_opt,od_price) values (olid,plidx,odcnt,odopt,odprice);
+end $$
+delimiter ;
+drop procedure sp_ord_detail_in;
+
+call sp_ord_detail_in('2011160001',1,1,'270',135000);
+
+select * from tm_order_detail;
+
+-- 자유게시판 테이블
+create table tm_bbs_free(
+	bf_idx int unsigned auto_increment primary key, -- 글번호
+    bf_writer varchar(20) not null, -- 작성자명(회원ID)
+    bf_pwd varchar(20), -- 비밀번호(비회원일 경우)
+    bf_title varchar(100) not null, -- 글제목
+    bf_content text not null, -- 글내용
+    bf_read int default 0, -- 조회수
+    bf_good int default 0, -- 추천수
+    bf_bad int default 0, -- 비추천수
+    bf_reply int default 0, -- 댓글수
+    bf_notice char(1) default 'n', -- 공지글여부(y:공지글,n:일반글)
+    bf_status char(1) default 'a', -- 글상태(a:일반,b:삭제글)
+    bf_date datetime default now()
+);
+
+-- 자유게시판 테이블에 새 글을 입력하는 프로시저 sp_bbs_free_in를 작성
+drop procedure sp_bbs_free_in;
+delimiter $$
+create procedure sp_bbs_free_in(
+	bfwriter varchar(20),bfpwd varchar(20),bftitle varchar(100),bfcontent text,bfnotice char(1))
+begin
+	insert into tm_bbs_free (bf_writer,bf_pwd,bf_title,bf_content,bf_notice)
+    values (bfwriter,bfpwd,bftitle,bfcontent,bfnotice);
+end $$
+delimiter ;
+call sp_bbs_free_in('홍길동','1234','제목...','내용...','n');
+select * from tm_bbs_free;
+
+-- 자유게시판 테이블의 글을 수정하는 프로시저 sp_bbs_free_up을 작성
+drop procedure if exists sp_bbs_free_up;
+delimiter $$
+create procedure sp_bbs_free_up( bfidx int,
+    bftitle varchar(100),
+    bfcontent text,
+    bfnotice char(1)
+)
+begin
+	update tm_bbs_free set bf_title = bftitle, bf_content = bfcontent,bf_notice = bfnotice
+    where bf_idx = bfidx;
+end $$
+delimiter ;
+
+call sp_bbs_free_up(1,'제목제목..','내용내용..','n');
+select * from tm_bbs_free;
+
+-- 자유게시판 테이블의 글을 삭제하는 프로시저 sp_bbs_del을 작성
+drop procedure if exists sp_bbs_free_del;
+delimiter $$
+create procedure sp_bbs_free_del (
+	bfidx int
+)
+begin
+	update tm_bbs_free set bf_status = 'b' where bf_idx = bfidx;
+end $$
+delimiter ;
+
+call sp_bbs_free_del(1);
+select * from tm_bbs_free;
+
+-- 자유 게시판 댓글 테이블
+create table tm_bbs_free_reply(
+	bfr_idx int unsigned auto_increment primary key, -- 댓글번호
+	bf_idx int unsigned not null,
+    bfr_writer varchar(20) not null, -- 작성자명(회원ID)
+    bfr_pwd varchar(20), -- 비밀번호
+    bfr_content varchar(500) not null, -- 댓글내용
+    bfr_good int default 0, -- 추천
+    bfr_bad int default 0, -- 비추천
+	bfr_answer int unsigned default 0, -- 대댓글번호(댓글이면 자신의 번호)
+    bfr_date datetime default now(), -- 작성일
+    bfr_rept char(1) default 'a', -- 신고(a:일반,b:신고)
+    bfr_status char(1) default 'a', -- 상태(a:일반,b:신고삭제,c:삭제)
+    constraint fk_bfr_bf_idx foreign key (bf_idx) references tm_bbs_free(bf_idx)
+);
+
+drop procedure if exists sp_bbs_free_reply_in;
+delimiter $$
+create procedure sp_bbs_free_reply_in(
+	bfridx int,
+	bfidx int,
+    bfrwriter varchar(20),
+    bfrpwd varchar(20),
+    bfrcontent varchar(500),
+	bfranswer int
+)
+begin
+	declare bfridx int;
+	select max(bfr_idx)+1 into bfridx from tm_bbs_free_reply;
+    
+    -- 댓글 테이블에서 댓글번호 중 가장 큰 값 + 1의 값을 bfridx변수에 넣음
+    
+    if bfridx is null then -- 처음 댓글이 없으면 1로 댓글번호 지정
+		set bfridx = 1;
+    end if;
+    
+    if bfranswer = 0 then -- 대댓글이 아닌 일반 댓글인 경우
+		set bfranswer = bfridx;
+	end if;
+    
+	insert into tm_bbs_free_reply (bfr_idx,bf_idx,bfr_writer,bfr_pwd,bfr_content,bfr_answer) values (bfridx,bfidx,bfrwriter,bfrpwd,bfrcontent,bfranswer);
+    update tm_bbs_free set bf_reply = bf_reply+1 where bf_idx = bfidx;
+end $$
+delimiter ;
+
+call sp_bbs_free_reply_in(1,1,'전우치','1234','댓글내용',0);
+call sp_bbs_free_reply_in(1,1,'임꺽정','1234','댓글내용2',1);
+call sp_bbs_free_reply_in(2,1,'임꺽정','1234','댓글내용22',0);
+select * from tm_bbs_free_reply;
+select * from tm_bbs_free;
+
+update tm_bbs_free set bf_reply = 0;
+
+select max(bfr_idx) from tm_bbs_free_reply;
+
+-- 자유게시판 댓글테이블의 댓글을 삭제하는 프로시저 sp_bbs_free_reply_del을 잣겅
+drop procedure if exists sp_bbs_free_reply_del;
+delimiter $$
+create procedure sp_bbs_free_reply_del(
+	
 )
 begin
 	update 
+
 end $$
 delimiter ;
