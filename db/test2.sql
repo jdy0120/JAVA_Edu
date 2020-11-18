@@ -120,6 +120,8 @@ begin
 end $$
 delimiter ;
 call sp_ord_list_in('2011160001','test1','','','','','홍길동','010-1234-5678','12345','서울시 강남구 삼성동','123-45','',0,100,'a',135000,'b');
+call sp_ord_list_in('2011160002','test1','','','','','홍길동','010-1234-5678','12345','서울시 강남구 삼성동','123-45','',0,100,'a',150000,'b');
+call sp_ord_list_in('2011160003','test2','','','','','김길동','010-1234-5678','12345','서울시 강남구 삼성동','123-45','',0,100,'a',170000,'b');
 select * from tm_order_list;
 
 
@@ -134,7 +136,10 @@ end $$
 delimiter ;
 drop procedure sp_ord_detail_in;
 
-call sp_ord_detail_in('2011160001',1,1,'270',135000);
+call sp_ord_detail_in('2011160002',2,1,'270',150000);
+call sp_ord_detail_in('2011160002',3,1,'270',170000);
+call sp_ord_detail_in('2011160003',1,1,'265',135000);
+call sp_ord_detail_in('2011160003',2,2,'265',300000);
 
 select * from tm_order_detail;
 
@@ -203,7 +208,7 @@ create table tm_bbs_free_reply(
 	bfr_idx int unsigned auto_increment primary key, -- 댓글번호
 	bf_idx int unsigned not null,
     bfr_writer varchar(20) not null, -- 작성자명(회원ID)
-    bfr_pwd varchar(20), -- 비밀번호
+    bfr_pwd varchar(20) default '', -- 비밀번호
     bfr_content varchar(500) not null, -- 댓글내용
     bfr_good int default 0, -- 추천
     bfr_bad int default 0, -- 비추천
@@ -213,6 +218,7 @@ create table tm_bbs_free_reply(
     bfr_status char(1) default 'a', -- 상태(a:일반,b:신고삭제,c:삭제)
     constraint fk_bfr_bf_idx foreign key (bf_idx) references tm_bbs_free(bf_idx)
 );
+drop table tm_bbs_free_reply;
 
 drop procedure if exists sp_bbs_free_reply_in;
 delimiter $$
@@ -257,10 +263,58 @@ select max(bfr_idx) from tm_bbs_free_reply;
 drop procedure if exists sp_bbs_free_reply_del;
 delimiter $$
 create procedure sp_bbs_free_reply_del(
-	
+	bfridx int, bfrstatus char(1), bfidx int
 )
 begin
-	update 
-
+	declare cnt int; -- 회원 테이블의 댓글 개수를 줄이기 위한 변수
+	select count(*) into cnt from tm_bbs_free_reply
+	where bfr_answer = bfridx; -- 삭제할 댓글 개수를 cnt에 담음
+	
+    update tm_bbs_free_reply set bfr_status = bfrstatus
+	where bfr_idx = bfridx;
+    
+	if bfrstatus = 'c' then -- 일반삭제인 경우 대댓글도 삭제시킴
+		update tm_bbs_free_reply set bfr_status = bfrstatus
+        where bfr_answer = bfridx;
+        
+        update tm_bbs_free set bf_reply = bf_reply - cnt
+        where bf_idx = bfidx; -- 게시글의 댓글 개수 감소
+    end if;
 end $$
 delimiter ;
+
+call sp_bbs_free_reply_del(1,'c',1);
+select * from tm_bbs_free_reply;
+select * from tm_bbs_free;
+
+select * from tm_product_list;
+select * from tm_order_list;
+select * from tm_order_detail;
+
+-- 모든 주문에서 판매된 상품들을 출력, 정렬 : 주문번호, 주문일
+select  p.pl_name, d.ol_id, l.ol_date
+from tm_product_list p, tm_order_list l, tm_order_detail d
+where p.pl_idx = d.pl_idx and l.ol_id = d.ol_id
+order by d.ol_id,l.ol_date;
+
+select  p.pl_name, d.ol_id, l.ol_date, d.od_opt, p.pl_view
+from tm_product_list p, tm_order_list l, tm_order_detail d
+where p.pl_idx = d.pl_idx and l.ol_id = d.ol_id
+order by d.ol_id,l.ol_date; -- 어드민용 주문목록 쿼리
+
+-- 주문번호, 주문자명(ID), 상품ID, 상품명, 주문개수, 가격 주문일
+select d.od_idx,l.ml_id,p.pl_idx,p.pl_name,d.od_cnt,d.od_price
+from tm_product_list p, tm_order_list l, tm_order_detail d
+where p.pl_idx = d.pl_idx and l.ol_id = d.ol_id;
+
+-- 각 상품별 판매횟수를 출력
+select count(*)
+from tm_product_list
+group by pl_name;
+
+-- 각 상품별 판매횟수를 출력 상품ID,상품명, 판매횟수
+select p.pl_idx,p.pl_name,count(p.pl_idx) 판매횟수, sum(d.od_cnt) 판매개수
+from tm_product_list p, tm_order_detail d
+where p.pl_idx = d.pl_idx
+group by p.pl_idx
+having 판매횟수 >= 2;
